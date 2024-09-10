@@ -1,0 +1,124 @@
+﻿@model List<NguoiDung>
+@{
+    ViewData["Title"] = "GiangVien";
+    Layout = "~/Views/Shared/_LayoutIndexUsers.cshtml";
+}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+<style>
+    .center-text {
+        text-align: center; /* Canh giữa văn bản */
+    }
+
+    .manager-info {
+        font-style: italic; /* In nghiêng văn bản */
+        margin-top: 10px; /* Khoảng cách từ phía trên */
+    }
+
+    .hero-section {
+        margin-bottom: 20px; /* Khoảng cách dưới */
+    }
+
+    .hero-content h1 {
+        margin-bottom: 20px; /* Khoảng cách dưới */
+    }
+</style>
+<section class="hero-section position-relative padding-large"
+         style="background-image:  url(../layoutUser/images/banner-image-bg-1.jpg); background-size: cover; background-repeat: no-repeat; background-position: center; height: 400px;">
+    <div class="hero-content">
+        <div class="container">
+            <div class="row">
+                <div class="text-center">
+                    <h1>Đội ngũ cán bộ</h1>
+                    <div class="breadcrumbs">
+                        <span class="item">
+                            <a href="index.html">Trang chủ > </a>
+                        </span>
+                        <span class="item text-decoration-underline">Đội ngũ cán bộ</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<p class="center-text">
+    Hiện nay, Trung tâm Thông tin - Thư viện có 1 CBVC.
+</p>
+
+<p class="center-text">
+    Giám đốc: Nguyễn Văn Khánh - Chịu trách nhiệm quản lý toàn diện đơn vị, Phụ trách trực tiếp việc ứng dụng CNTT trong thư viện.
+</p>
+<section class="cart padding-large">
+    <div class="container">
+
+        <div class="row">
+            
+                <div class="cart-table">
+                    <div class="cart-header border-bottom border-top">
+                        <div class="row d-flex text-capitalize">
+                            <h4 class="col-lg-4 py-3 m-0">Ảnh</h4>
+                            <h4 class="col-lg-3 py-3 m-0">Tên nhân viên</h4>
+                            <h4 class="col-lg-4 py-3 m-0">Chức vụ</h4>
+                            @*<h4 class="col-lg-auto py-3 m-0">Liên hệ</h4>*@
+                        </div>
+                    </div>
+                    @foreach (var item in Model)
+                    {
+                        <div class="cart-item border-bottom padding-small">
+                            <div class="row align-items-center">
+                                <div class="col-lg-4 col-md-3">
+                                    <div class="cart-info d-flex gap-2 flex-wrap align-items-center">
+                                        <div class="col-lg-5">
+                                            <div class="card-image">
+                                                <img src="../layoutUser/images/sanpham1.png" alt="cart-img" class="img-fluid border rounded-3" style="width: 66.67%">
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-4">
+                                            <div class="card-detail">
+                                               
+                                           
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            <div class="col-lg-6 col-md-7">
+                                <div class="row d-flex">
+                                    <div class="col-md-6">
+                                        <div class="product-quantity my-2 my-2">
+                                            <div class="input-group product-qty align-items-center" style="max-width: 150px;">
+
+
+                                                @item.Ten
+
+
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="cart-cross-outline">
+                                            @item.Chucvu
+                                        </div>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <div class="cart-cross-outline">
+                                            <!-- Thêm thông tin liên hệ của người dùng -->
+                                        @item.Sodienthoai
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                                
+                            </div>
+                        </div>
+
+                    }
+                </div>
+            
+            
+
+        </div>
+
+    </div>
+</section>
+
+

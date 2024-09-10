@@ -1,0 +1,61 @@
+﻿@model IEnumerable<DATN_LiBrary.Models.PhieuMuon>
+
+@{
+    ViewData["Title"] = "Home Page";
+    Layout = "~/Views/Shared/LayoutIndexAdmin.cshtml";
+}
+
+<div class="container-fluid">
+    <!-- DataTales Example -->
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+            <h6 class="m-0 font-weight-bold text-primary">Phiếu mượn online</h6>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                    <thead>
+                        <tr>
+                            <th>Mã phiếu</th>
+                            <th>Tên người mượn</th>
+                            <th>Mã thẻ</th>
+                            <th>Trạng thái</th>
+                            <th>Ngày tạo</th>
+                            <th>Thời gian lấy</th>
+                            <th>Thao tác</th>
+                        </tr>
+                    </thead>
+
+                    @{
+                        int stt = 1;
+
+                    }
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>@item.Maphieumuon</td>
+                                <td>@item.ManguoimuonNavigation?.Ten</td>
+                                <td>@item.ManguoimuonNavigation?.Manguoimuon</td>
+                                <td>@item.Trangthai</td>
+                                <td>@(item.Ngaytao.HasValue ? item.Ngaytao.Value.ToShortDateString() : "")</td>
+                                <td>@(item.Ngaymuon.HasValue ? item.Ngaymuon.Value.ToShortDateString() : "")</td>
+                                <td>
+                                    <a asp-controller="HomeAdmin" asp-action="Details" asp-route-id="@item.Maphieumuon" >
+                                        <i class="fa fa-eye" aria-hidden="true"></i>
+                                    </a>
+                                </td>
+                            </tr>
+                            stt++;
+                        }
+
+
+                    </tbody>
+
+
+                </table>
+            </div>
+        </div>
+    </div>
+
+</div>

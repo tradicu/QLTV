@@ -1,0 +1,117 @@
+﻿@model List<NguoiMuon>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/LayoutAdmin.cshtml";
+}
+<div class="container-fluid">
+    <!-- DataTales Example -->
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+            <h6 class="m-0 font-weight-bold text-primary">Danh sách người mượn</h6>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <div>
+                    <input type="checkbox" id="studentCheckbox" name="userType" value="sv">
+                    <label for="studentCheckbox">Sinh viên</label>
+                    <input type="checkbox" id="teacherCheckbox" name="userType" value="gv">
+                    <label for="teacherCheckbox">Giảng viên</label>
+                </div>
+
+                <div id="studentDiv" style="display:none;">
+                    <h3>Danh sách sinh viên</h3>
+                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                        <thead>
+                            <tr>
+                                <th>Mã người dùng</th>
+                                <th>Tên người dùng</th>
+                                <th>Mã tài khoản</th>
+                                <th>Khoa</th>
+                                <th>Khóa</th>
+                                <th>Thao tác</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            @foreach (var nguoiMuon in ViewBag.SinhViens)
+                            {
+                                <tr>
+                                    <td>@nguoiMuon.Manguoimuon</td>
+                                    <td>@nguoiMuon.Ten</td>
+                                    <td>@nguoiMuon.Manguoidung</td>
+                                    <td>@nguoiMuon.Khoa</td>
+                                    <td>@nguoiMuon.Khoas</td>
+                                    <td>
+                                        <a asp-controller="QlNguoiDung" asp-action="Details" asp-route-id="@nguoiMuon.Manguoimuon">
+                                            <i class="fa fa-eye" aria-hidden="true"></i>
+                                        </a>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+
+                <div id="teacherDiv" style="display:none;">
+                    <h3>Danh sách giảng viên</h3>
+                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                        <thead>
+                            <tr>
+                                <th>Mã giảng viên</th>
+                                <th>Tên</th>
+                                <th>Khoa</th>
+                                <th>Thao tác</th>
+                                <!-- Thêm các cột cần thiết -->
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var teacher in ViewBag.GiangViens)
+                            {
+                                <tr>
+                                    <td>@teacher.Manguoimuon</td>
+                                    <td>@teacher.Ten</td>
+                                    <td>@teacher.Khoa</td>
+                                     <td>
+                                        <a asp-controller="QlNguoiDung" asp-action="Details" asp-route-id="@teacher.Manguoimuon">
+                                            <i class="fa fa-eye" aria-hidden="true"></i>
+                                        </a>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+
+           
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    document.addEventListener('DOMContentLoaded', (event) => {
+        const studentCheckbox = document.getElementById('studentCheckbox');
+        const teacherCheckbox = document.getElementById('teacherCheckbox');
+        const studentDiv = document.getElementById('studentDiv');
+        const teacherDiv = document.getElementById('teacherDiv');
+
+        studentCheckbox.addEventListener('change', function () {
+            if (this.checked) {
+                studentDiv.style.display = 'block';
+                teacherDiv.style.display = 'none';
+                teacherCheckbox.checked = false;
+            } else {
+                studentDiv.style.display = 'none';
+            }
+        });
+
+        teacherCheckbox.addEventListener('change', function () {
+            if (this.checked) {
+                teacherDiv.style.display = 'block';
+                studentDiv.style.display = 'none';
+                studentCheckbox.checked = false;
+            } else {
+                teacherDiv.style.display = 'none';
+            }
+        });
+    });
+</script>

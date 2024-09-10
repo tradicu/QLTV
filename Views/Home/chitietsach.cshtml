@@ -1,0 +1,205 @@
+﻿@model DATN_LiBrary.Models.Sach
+@{
+    ViewData["Title"] = "chitietsach";
+    Layout = "~/Views/Shared/_LayoutIndexUsers.cshtml";
+}
+
+<style>
+        .pdf-link {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+        }
+        .pdf-link:hover {
+            background-color: #0056b3;
+        }
+    </style>
+<section class="hero-section position-relative padding-large" style="background-image: url(../layoutUser/images/banner-image-bg-1.jpg); background-size: cover; background-repeat: no-repeat; background-position: center; height: 400px;">
+    <div class="hero-content">
+        <div class="container">
+            <div class="row">
+                <div class="text-center">
+                    <h1>Chi tiết</h1>
+                    <div class="breadcrumbs">
+                        <span class="item">
+                            <a href="index.html">Home > </a>
+                        </span>
+                        <span class="item text-decoration-underline">Tra cứu > </span>
+                        <span class="item text-decoration-underline">Chi tiết</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="single-product padding-large">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6">
+                <div class="d-flex gap-3 product-preview">
+                    @*<div class="swiper thumb-swiper w-50">
+                        <div class="swiper-wrapper d-flex flex-wrap gap-3 align-content-start">
+                            <div class="swiper-slide bg-white">
+                                <img src="images/product-thumbnail-1.png" alt="product-thumb" class="img-fluid border rounded-3">
+                            </div>
+                            <div class="swiper-slide bg-white">
+                                <img src="images/product-thumbnail-2.png" alt="product-thumb" class="img-fluid border rounded-3">
+                            </div>
+                            <div class="swiper-slide bg-white">
+                                <img src="images/product-thumbnail-3.png" alt="product-thumb" class="img-fluid border rounded-3">
+                            </div>
+                        </div>
+                    </div>*@
+                    <div class="swiper large-swiper border rounded-3 overflow-hidden swiper-fade swiper-initialized swiper-horizontal swiper-watch-progress swiper-backface-hidden">
+                        <div class="swiper-wrapper">
+                            <div class="swiper-slide bg-white">
+                                <img src="../layoutUser/images/sanpham1.png" alt="single-product" class="img-fluid">
+                            </div>
+                            <div class="swiper-slide bg-white">
+                                <img src="../layoutUser/images/sanpham1.png" alt="single-product" class="img-fluid">
+                            </div>
+                            <div class="swiper-slide bg-white">
+                                <img src="../layoutUser/images/sanpham1.png" alt="single-product" class="img-fluid">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="product-info ps-lg-5 pt-3 pt-lg-0">
+                    <div class="element-header">
+                        <h3 class="product-title">@Model.Nhande</h3>
+                        <div class="product-price d-flex align-items-center mt-2">
+                            @*<span class="fs-2 fw-light text-primary me-2">$200</span>
+                            <del>$260</del>*@
+                        </div>
+                        
+                    </div>
+                    <p></p>
+            
+                    @{
+                        string tacgias = Model.Mtgs.ToArray()[0].Ttg;
+                        string theloais = Model.Matheloais.ToArray()[0].Tentheloai;
+                        string maquyens = Model.Maquyens.ToArray()[0].Tenquyen;
+                    }
+                    @for (int i = 1; i < Model.Mtgs.Count; i++)
+                    {
+                        tacgias += (", " + Model.Mtgs.ToArray()[i].Ttg);
+                    }
+                    @for (int i = 1; i < Model.Matheloais.Count; i++)
+                    {
+                        theloais += (", " + Model.Matheloais.ToArray()[i].Tentheloai);
+                    }
+                    @for (int i = 1; i < Model.Maquyens.Count; i++)
+                    {
+                        maquyens += (", " + Model.Maquyens.ToArray()[i].Tenquyen);
+                    }
+                    <div class="meta-product my-3">
+                        <div class="meta-item d-flex mb-1">
+                            <span class="fw-medium me-2">Tác giả:</span>
+                            <ul class="select-list list-unstyled d-flex mb-0">
+                                <li data-value="S" class="select-item">
+                                    <a href="#">@tacgias</a>
+                                </li>
+                                
+                            </ul>
+                        </div>
+                        <div class="meta-item d-flex mb-1">
+                            <span class="fw-medium me-2">Thể loại:</span>
+                            <ul class="select-list list-unstyled d-flex mb-0">
+                                <li data-value="S" class="select-item">
+                                    <a href="#">@theloais</a>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <div class="meta-item d-flex mb-1">
+                            <span class="fw-medium me-2">Năm xuất bản:</span>
+                            <ul class="select-list list-unstyled d-flex mb-0">
+                                <li data-value="S" class="select-item">
+                                    <a href="#">@Model.Namxuatban</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="meta-item d-flex mb-1">
+                            <span class="fw-medium me-2">Nhà xuất bản:</span>
+                            <ul class="select-list list-unstyled d-flex mb-0">
+                                <li data-value="S" class="select-item">
+                                    <a href="#">@Model.MnxbNavigation?.Tnxb</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="meta-item d-flex mb-1">
+                            <span class="fw-medium me-2">Số trang:</span>
+                            <ul class="select-list list-unstyled d-flex mb-0">
+                                <li data-value="S" class="select-item">
+                                    <a href="#">@Model.Sotrang</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="meta-item d-flex mb-1">
+                            <span class="fw-medium me-2">Quyền mượn:</span>
+                            <ul class="select-list list-unstyled d-flex mb-0">
+                                <li data-value="S" class="select-item">
+                                    <a href="#">@maquyens</a>
+                                </li>
+                            </ul>
+                        </div>
+                        @if (Context.Session.GetString("Manguoidung") != null && @theloais == "Thư viện số")
+                        {
+                            <div class="meta-item d-flex mb-1">
+                                <ul class="select-list list-unstyled d-flex mb-0">
+                                    <li data-value="S" class="select-item">
+
+                                        <iframe src="https://drive.google.com/file/d/1CqC2UThFiSTPTvB8c3MMJhj-b6zBd6sG/preview"
+                                            frameBorder="0"
+                                            scrolling="auto"
+                                            height="200%"
+                                            width="200%"></iframe>
+                                        
+                                    </li>
+                                </ul>
+                            </div>
+                        }
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="product-tabs">
+    <div class="container">
+        <div class="row">
+            <div class="tabs-listing">
+                <nav>
+                    <div class="nav nav-tabs d-flex justify-content-center py-3" id="nav-tab" role="tablist">
+                        <button class="nav-link text-capitalize active" id="nav-home-tab" data-bs-toggle="tab" data-bs-target="#nav-home" type="button" role="tab" aria-controls="nav-home" aria-selected="true">Mô tả</button>
+                        @*<button class="nav-link text-capitalize" id="nav-information-tab" data-bs-toggle="tab" data-bs-target="#nav-information" type="button" role="tab" aria-controls="nav-information" aria-selected="false">Additional information</button>*@
+                 @*       <button class="nav-link text-capitalize" id="nav-shipping-tab" data-bs-toggle="tab" data-bs-target="#nav-shipping" type="button" role="tab" aria-controls="nav-shipping" aria-selected="false">Shipping & Return</button>
+                        <button class="nav-link text-capitalize" id="nav-review-tab" data-bs-toggle="tab" data-bs-target="#nav-review" type="button" role="tab" aria-controls="nav-review" aria-selected="false">Reviews (02)</button>
+                    *@
+                    </div>
+                </nav>
+                <div class="tab-content border-bottom py-4" id="nav-tabContent">
+                    <div class="tab-pane fade active show" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+                        <p>@Model.Mota</p>
+                        
+                           
+                    </div>
+                    <div class="tab-pane fade" id="nav-information" role="tabpanel" aria-labelledby="nav-information-tab">
+                        <p>It is Comfortable and Best</p>
+                        <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                    </div>
+               
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

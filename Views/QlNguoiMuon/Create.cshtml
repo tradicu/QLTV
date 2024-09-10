@@ -1,0 +1,88 @@
+﻿@model NguoiMuon
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Views/Shared/LayoutAdmin.cshtml";
+}
+<div class="container-fluid">
+    <!-- DataTales Example -->
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+            <h6 class="m-0 font-weight-bold text-primary">Thêm người mượn</h6>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <form id="createForm" asp-action="Create" method="post">
+                    <div class="form-group">
+                        <label>
+                            <input type="radio" id="isTeacher" name="role" value="teacher" /> Giảng viên
+                        </label>
+                        <label>
+                            <input type="radio" id="isStudent" name="role" value="student" /> Sinh Viên
+                        </label>
+                    </div>
+
+                    <div id="commonFields">
+                        <div class="form-group">
+                            <label asp-for="Ten" class="control-label"></label>
+                            <input asp-for="Ten" class="form-control" />
+                            <span asp-validation-for="Ten" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="Khoa" class="control-label"></label>
+                            <input asp-for="Khoa" class="form-control" />
+                            <span asp-validation-for="Khoa" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="Manguoimuon" class="control-label"></label>
+                            <input asp-for="Manguoimuon" class="form-control" />
+                            <span asp-validation-for="Manguoimuon" class="text-danger"></span>
+                        </div>
+                    </div>
+
+                    <div id="teacherFields" style="display: none;">
+                        @*<div class="form-group">
+                            <label asp-for="Manguoimuon" class="control-label"></label>
+                            <input asp-for="Manguoimuon" class="form-control" />
+                            <span asp-validation-for="Manguoimuon" class="text-danger"></span>
+                        </div>*@
+                    </div>
+
+                    <div id="studentFields" style="display: none;">
+                        @*<div class="form-group">
+                            <label asp-for="Manguoimuon" class="control-label"></label>
+                            <input asp-for="Manguoimuon" class="form-control" />
+                            <span asp-validation-for="Manguoimuon" class="text-danger"></span>
+                        </div>*@
+                        <div class="form-group">
+                            <label asp-for="Khoas" class="control-label"></label>
+                            <input asp-for="Khoas" class="form-control" />
+                            <span asp-validation-for="Khoas" class="text-danger"></span>
+                        </div>
+                    </div>
+
+                    <input type="submit" value="Create" class="btn btn-primary" />
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        document.getElementById('isTeacher').addEventListener('change', function () {
+            if (this.checked) {
+                document.getElementById('teacherFields').style.display = 'block';
+                document.getElementById('studentFields').style.display = 'none';
+                
+            }
+        });
+
+        document.getElementById('isStudent').addEventListener('change', function () {
+            if (this.checked) {
+                document.getElementById('teacherFields').style.display = 'none';
+                document.getElementById('studentFields').style.display = 'block';
+                 
+            }
+        });
+    </script>
+}

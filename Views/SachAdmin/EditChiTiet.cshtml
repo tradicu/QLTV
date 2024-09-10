@@ -1,0 +1,38 @@
+﻿@model DATN_LiBrary.Models.ChiTietSach
+@{
+    ViewData["Title"] = "EditChiTiet";
+    Layout = "~/Views/Shared/LayoutIndexAdmin.cshtml";
+}
+
+<div class="container-fluid">
+    <!-- DataTales Example -->
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+            <h6 class="m-0 font-weight-bold text-primary">Phiếu mượn online</h6>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <input type="hidden" name="id" value="@Model.Macthd" />
+                <form asp-controller="SachAdmin" asp-action="EditChiTiet" method="post">
+            <div class="form-group">
+                <label asp-for="Macthd" class="control-label">Mã chi tiết sách</label>
+                <input asp-for="Macthd" class="form-control" readonly />
+            </div>
+            <div class="form-group">
+                <label asp-for="Masach" class="control-label">Tên sách</label>
+                <select asp-for="Masach" class="form-control" asp-items="@(new SelectList(ViewBag.SachList, "Masach", "Nhande", Model.Masach))"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="Mlt" class="control-label">Nơi lưu trữ</label>
+                <select asp-for="Mlt" class="form-control" asp-items="@(new SelectList(ViewBag.NoiLuuTruList, "Mlt", "Nlt", Model.Mlt))"></select>
+            </div>
+            <!-- Add other fields as necessary -->
+                     <div class="col-lg-12 text-end">
+                                                <button type="submit" class="btn btn-primary" value="Create">Lưu</button>
+                                            </div>
+        </form>
+            </div>
+        </div>
+    </div>
+</div>
+

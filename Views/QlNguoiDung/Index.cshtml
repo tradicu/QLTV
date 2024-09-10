@@ -1,0 +1,54 @@
+﻿@model IEnumerable<DATN_LiBrary.Models.NguoiMuon>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/LayoutIndexAdmin.cshtml";
+}
+<div class="container-fluid">
+    <!-- DataTales Example -->
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+            <h6 class="m-0 font-weight-bold text-primary">Danh sách người dùng</h6>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <div class="table-responsive">
+                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                        <thead>
+                            <tr>
+                                <th>Mã người dùng</th>
+                                <th>Tên người dùng</th>
+                                <th>Mã tài khoản</th>
+                                <th>Khoa</th>
+                                <th>Khóa</th>
+                                <th>Thao tác</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            @foreach (var nguoiMuon in Model)
+                            {
+                                <tr>
+                                    <td>@nguoiMuon.Manguoimuon</td>
+                                    <td>@nguoiMuon.Ten</td>
+                                    <td>@nguoiMuon.Manguoidung</td>                                                                        
+                                    <td>@nguoiMuon.Khoa</td>
+                                    <td>@nguoiMuon.Khoas</td>
+                                    <td>
+                                        <a asp-controller="QlNguoiDung" asp-action="Details" asp-route-id="@nguoiMuon.Manguoidung">
+                                            <i class="fa fa-eye" aria-hidden="true"></i>
+                                        </a>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+

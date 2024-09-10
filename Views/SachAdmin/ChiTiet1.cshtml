@@ -1,0 +1,61 @@
+﻿@model Tuple<Sach, List<Tuple<ChiTietSach, string>>>
+@{
+    ViewData["Title"] = "ChiTiet1";
+    Layout = "~/Views/Shared/LayoutAdmin.cshtml";
+}
+<div class="container-fluid">
+    <!-- DataTales Example -->
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+            <h6 class="m-0 font-weight-bold text-primary">Chi tiết</h6>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                @foreach (var item in Model.Item2)
+                {
+                    <div class="column">
+                        <div class="custom-border-bottom">
+                            <div class="row">
+
+                                <div class="col-lg-3">
+                                    <label>Mã chi tiết sách</label>
+                                </div>
+                                <div class="col-lg-9">
+                                    <label for="cname">Nhan đề</label>
+                                </div>
+                            </div>
+                            <div class="row">
+
+                                <div class="col-lg-3">
+                                    <input type="text" id="macthd" class="form-control mt-2 mb-4 ps-3" value="@item.Item1.Macthd" readonly>
+                                </div>
+                                <div class="col-lg-9">
+                                    <input type="text" id="nhande" class="form-control mt-2 mb-4 ps-3" value="@Model.Item1.Nhande" readonly>
+                                </div>
+                            </div>
+                            <div class="row">
+
+                                <div class="col-lg-6">
+                                    @if (item.Item1.MltNavigation != null)
+                                    {
+                                        <label>Nơi lưu trữ</label>
+                                        <input type="text" id="nlt" class="form-control mt-2 mb-4 ps-3" value="@item.Item1.MltNavigation.Nlt" readonly>
+                                    }
+                                    <label>Nơi lưu trữ</label>
+                                        <input type="text" id="nlt" class="form-control mt-2 mb-4 ps-3" value="" readonly>
+                                </div>
+                                <div class="col-lg-6">
+                                    <label>Tình trạng</label>
+                                    <input type="text" id="tinhtrang" class="form-control mt-2 mb-4 ps-3" value="@item.Item2" readonly>
+                                </div>
+                            </div>
+                          
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+
+

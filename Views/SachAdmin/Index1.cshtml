@@ -1,0 +1,55 @@
+﻿@model IEnumerable<dynamic>
+@{
+    ViewData["Title"] = "Index1";
+    Layout = "~/Views/Shared/LayoutAdmin.cshtml";
+}
+<div class="container-fluid">
+    <!-- DataTables Example -->
+    <div class="card shadow mb-4">
+        <div class="card-header py-3 d-flex justify-content-between align-items-center">
+            <h6 class="m-0 font-weight-bold text-primary">Sách</h6>
+            <a href="@Url.Action("Create", "SachAdmin")" class="btn btn-primary">Thêm mới</a>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                    <thead>
+                        <tr>
+                            <th>Mã sách</th>
+                            <th>Tên sách</th>
+                            <th>Chưa mượn</th>
+                            <th>Đang mượn</th>
+                            <th>Đã đặt</th>
+                            <th>Thao tác</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                                <tr>
+                                    <td>@item.SachId</td>
+                                    <td>@item.TenSach</td>
+                                    <td>@item.SoLuongChuaMuon</td>
+                                    <td>@item.SoLuongDangMuon</td>
+                                    <td>@item.SoLuongDangDat</td>
+                                    <td>
+                                        <a asp-controller="SachAdmin" asp-action="Details" asp-route-id="@item.SachId">
+                                            <i class="fas fa-eye"></i> <!-- Biểu tượng xem chi tiết -->
+                                        </a>
+                                    @*<a asp-controller="SachAdmin" asp-action="Edit" asp-route-maSach="@item.SachId">
+                                         <i class="fas fa-edit"></i> 
+                                          </a>*@
+
+                                        @*<a href="#" class="delete-link">
+                                            <i class="fas fa-trash"></i> 
+                                        </a>*@
+                                    </td>
+                                </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+

@@ -1,0 +1,36 @@
+﻿@model Theloai
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Views/Shared/LayoutAdmin.cshtml";
+}
+<div class="container-fluid">
+    <!-- DataTales Example -->
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+            <h6 class="m-0 font-weight-bold text-primary">Thêm thể loại</h6>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <form asp-action="Create" method="post">
+                    <div id="commonFields">
+                        <div class="form-group">
+                            <label asp-for="Matheloai" class="control-label">Mã Thể Loại</label>
+                            <input asp-for="Matheloai" class="form-control" value="@ViewBag.NextMaTheLoai" readonly />
+                            <span asp-validation-for="Matheloai" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="Tentheloai" class="control-label">Tên Thể Loại</label>
+                            <input asp-for="Tentheloai" class="form-control" />
+                            <span asp-validation-for="Tentheloai" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <input type="submit" value="Create" class="btn btn-primary" />
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+

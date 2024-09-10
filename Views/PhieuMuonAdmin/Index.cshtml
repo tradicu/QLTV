@@ -1,0 +1,249 @@
+﻿@model List<PhieuMuon>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/LayoutIndexAdmin.cshtml";
+}
+<div class="container-fluid">
+    <!-- DataTales Example -->
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+            <h6 class="m-0 font-weight-bold text-primary">Danh sách phiếu mượn</h6>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <div>
+                    <input type="checkbox" id="phieumuonCheckbox" name="userType" value="pm">
+                    <label for="phieumuonCheckbox">Phiếu mượn</label>
+                    <input type="checkbox" id="hoanthanhCheckbox" name="userType" value="ht">
+                    <label for="hoanthanhCheckbox">Hoàn thành</label>
+                    <input type="checkbox" id="daduyetCheckbox" name="userType" value="dd">
+                    <label for="daduyetCheckbox">Đã duyệt</label>
+                    <input type="checkbox" id="khongduyetCheckbox" name="userType" value="kd">
+                    <label for="khongduyetCheckbox">Không duyệt</label>
+                  
+                </div>
+
+                <div id="phieumuonDiv" style="display:none;">
+                    <h3>Danh sách phiếu mượn</h3>
+                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                        <thead>
+                            <tr>
+                                <th>Mã phiếu mượn</th>
+                                <th>Mã người muợn</th>
+                                <th>Tên người mượn</th>
+                                <th>Ngày mượn</th>
+                                <th>Ngày trả</th>
+                                <th>Thao tác</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            @foreach (var phieuMuon in ViewBag.phieumuons)
+                            {
+                                <tr>
+                                    <td>@phieuMuon.Maphieumuon</td>
+                                    <td>@phieuMuon.Manguoimuon</td>
+                                    <td>@phieuMuon.ManguoimuonNavigation?.Ten</td>
+                                    <td>@(phieuMuon.Ngaymuon?.ToShortDateString() ?? "")</td>
+                                    <td>@(phieuMuon.Ngaytra?.ToShortDateString() ?? "")</td>
+                                    <td>
+                                        <a asp-controller="PhieuMuonAdmin" asp-action="Details" asp-route-id="@phieuMuon.Maphieumuon">
+                                            <i class="fa fa-eye" aria-hidden="true"></i>
+                                        </a>
+                                        @if (phieuMuon?.Maphieuphat != null)
+                                        {
+                                            <i class="fas fa-exclamation-circle"></i> <!-- Biểu tượng cảnh báo -->
+                                        }
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+
+                <div id="hoanthanhDiv" style="display:none;">
+                    <h3>Danh sách phiếu đã hoàn thành</h3>
+                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                        <thead>
+                            <tr>
+                               
+                                <th>Mã phiếu mượn</th>
+                                <th>Mã người muợn</th>
+                                <th>Tên người mượn</th>
+                                <th>Ngày mượn</th>
+                                <th>Ngày trả</th>
+                                <th>Thao tác</th>
+                            </tr>
+                            
+                        </thead>
+                        <tbody>
+                            @foreach (var hoanThanh in ViewBag.hoanThanhs)
+                            {
+                                <tr>
+                                    <td>@hoanThanh.Maphieumuon</td>
+                                    <td>@hoanThanh.Manguoimuon</td>
+                                    <td>@hoanThanh.ManguoimuonNavigation?.Ten</td>
+                                    <td>@(hoanThanh.Ngaymuon?.ToShortDateString() ?? "")</td>
+                                    <td>@(hoanThanh.Ngaytra?.ToShortDateString() ?? "")</td>
+                                    <td>
+                                        <a asp-controller="PhieuMuonAdmin" asp-action="Details" asp-route-id="@hoanThanh.Maphieumuon">
+                                            <i class="fa fa-eye" aria-hidden="true"></i>
+                                        </a>
+                                        @if (hoanThanh?.Maphieuphat != null)
+                                        {
+                                            <i class="fas fa-exclamation-circle"></i> <!-- Biểu tượng cảnh báo -->
+                                        }
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+
+                <div id="daduyetDiv" style="display:none;">
+                    <h3>Danh sách phiếu đã duyệt</h3>
+                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                        <thead>
+                            <tr>
+
+                                <th>Mã phiếu mượn</th>
+                                <th>Mã người muợn</th>
+                                <th>Tên người mượn</th>
+                                <th>Ngày tạo</th>
+                                <th>Ngày mượn</th>
+                                <th>Ngày trả</th>
+                                <th>Thao tác</th>
+                            </tr>
+
+                        </thead>
+                        <tbody>
+                            @foreach (var daDuyet in ViewBag.daDuyets)
+                            {
+                                <tr>
+                                    <td>@daDuyet.Maphieumuon</td>
+                                    <td>@daDuyet.Manguoimuon</td>
+                                    <td>@daDuyet.ManguoimuonNavigation?.Ten</td>
+                                    <td>@(daDuyet.Ngaytao?.ToShortDateString() ?? "")</td>
+                                    <td>@(daDuyet.Ngaymuon?.ToShortDateString() ?? "")</td>
+                                    <td>@(daDuyet.Ngaytra?.ToShortDateString() ?? "")</td>
+                                    <td>
+                                        <a asp-controller="PhieuMuonAdmin" asp-action="Details" asp-route-id="@daDuyet.Maphieumuon">
+                                            <i class="fa fa-eye" aria-hidden="true"></i>
+                                        </a>
+
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+
+                <div id="khongduyetDiv" style="display:none;">
+                    <h3>Danh sách phiếu không được duyệt</h3>
+                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                        <thead>
+                            <tr>
+
+                                <th>Mã phiếu mượn</th>
+                                <th>Mã người muợn</th>
+                                <th>Tên người mượn</th>
+                                <th>Ngày tạo</th>
+                                <th>Ngày mượn</th>
+                                <th>Ngày trả</th>
+                                <th>Thao tác</th>
+                            </tr>
+
+                        </thead>
+                        <tbody>
+                            @foreach (var khongDuyet in ViewBag.khongDuyets)
+                            {
+                                <tr>
+                                    <td>@khongDuyet.Maphieumuon</td>
+                                    <td>@khongDuyet.Manguoimuon</td>
+                                    <td>@khongDuyet.ManguoimuonNavigation?.Ten</td>
+                                    <td>@(khongDuyet.Ngaytao?.ToShortDateString() ?? "")</td>
+                                    <td>@(khongDuyet.Ngaymuon?.ToShortDateString() ?? "")</td>
+                                    <td>@(khongDuyet.Ngaytra?.ToShortDateString() ?? "")</td>
+                                    <td>
+                                        <a asp-controller="PhieuMuonAdmin" asp-action="Details" asp-route-id="@khongDuyet.Maphieumuon">
+                                    <i class="fa fa-eye" aria-hidden="true"></i>
+                                    </a>
+                                        
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    document.addEventListener('DOMContentLoaded', (event) => {
+        const phieumuonCheckbox = document.getElementById('phieumuonCheckbox');
+        const hoanthanhCheckbox = document.getElementById('hoanthanhCheckbox');
+        const daduyetCheckbox = document.getElementById('daduyetCheckbox');
+        const khongduyetCheckbox = document.getElementById('khongduyetCheckbox');
+        const phieumuonDiv = document.getElementById('phieumuonDiv');
+        const hoanthanhDiv = document.getElementById('hoanthanhDiv');
+        const daduyetDiv = document.getElementById('daduyetDiv');
+        const khongduyetDiv = document.getElementById('khongduyetDiv');
+
+        phieumuonCheckbox.addEventListener('change', function () {
+            if (this.checked) {
+                phieumuonDiv.style.display = 'block';
+                hoanthanhDiv.style.display = 'none';
+                daduyetDiv.style.display = 'none';
+                khongduyetDiv.style.display = 'none';
+                hoanthanhCheckbox.checked = false;
+                khongduyetCheckbox.checked = false;
+                daduyetCheckbox.checked = false;
+            } else {
+                phieumuonDiv.style.display = 'none';
+            }
+        });
+
+        hoanthanhCheckbox.addEventListener('change', function () {
+            if (this.checked) {
+                hoanthanhDiv.style.display = 'block';
+                phieumuonDiv.style.display = 'none';
+                khongduyetDiv.style.display = 'none';
+                daduyetDiv.style.display = 'none';
+                phieumuonCheckbox.checked = false;
+                khongduyetCheckbox.checked = false;
+                daduyetCheckbox.checked = false;
+            } else {
+                hoanthanhDiv.style.display = 'none';
+            }
+        });
+        daduyetCheckbox.addEventListener('change', function () {
+            if (this.checked) {
+                daduyetDiv.style.display = 'block';
+                phieumuonDiv.style.display = 'none';
+                hoanthanhDiv.style.display = 'none';
+                khongduyetDiv.style.display = 'none';
+                phieumuonCheckbox.checked = false;
+                hoanthanhCheckbox.checked = false;
+                khongduyetCheckbox.checked = false;
+            } else {
+                daduyetDiv.style.display = 'none';
+            }
+        });
+        khongduyetCheckbox.addEventListener('change', function () {
+            if (this.checked) {
+                khongduyetDiv.style.display = 'block';
+                phieumuonDiv.style.display = 'none';
+                hoanthanhDiv.style.display = 'none';
+                daduyetDiv.style.display = 'none';
+                phieumuonCheckbox.checked = false;
+                hoanthanhCheckbox.checked = false;
+                daduyetCheckbox.checked = false;
+            } else {
+                khongduyetDiv.style.display = 'none';
+            }
+        });
+    });
+</script>
+
+

@@ -1,0 +1,52 @@
+﻿@{
+    ViewData["Title"] = "QuyTrinh";
+    Layout = "~/Views/Shared/_LayoutIndexUsers.cshtml";
+}
+<style>
+    .lalalla {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 100%; /* Đảm bảo chiều cao của phần tử đầy đủ */
+    }
+
+        .lalalla .chapter {
+            text-align: center;
+        }
+
+            .lalalla .chapter p {
+                margin: 10px 0;
+            }
+
+    .fa-check-circle {
+        font-size: 24px; /* Kích thước của biểu tượng */
+        margin-right: 10px; /* Khoảng cách giữa biểu tượng và văn bản */
+    }
+</style>
+
+<section class="hero-section position-relative padding-large"
+         style="background-image: url(../layoutUser/images/banner-image-bg-1.jpg); background-size: cover; background-repeat: no-repeat; background-position: center; height: 400px;">
+    <div class="hero-content">
+        <div class="container">
+            <div class="row">
+                <div class="text-center">
+                    <h1>Hướng dẫn đăng ký</h1>
+                    <div class="breadcrumbs">
+                        <span class="item">
+                            <a href="index.html">Trang chủ > </a>
+                        </span>
+                        <span class="item text-decoration-underline">Hướng dẫn đăng ký</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<div class="lalalla">
+    <div class="chapter">
+        <p><strong><i class="fas fa-check-circle"></i> Bước 1.</strong> Xuất trình thẻ tại bàn thủ thư.</p>
+        <p><strong><i class="fas fa-check-circle"></i> Bước 2.</strong> Thủ thư kiểm tra thông tin.</p>
+        <p><strong><i class="fas fa-check-circle"></i> Bước 3.</strong> Nhận tài khoản với mật khẩu mặc định là 123456.</p>
+    </div>
+</div>

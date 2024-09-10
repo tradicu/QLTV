@@ -1,0 +1,49 @@
+﻿@model List<Theloai>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/LayoutAdmin.cshtml";
+}
+<div class="container-fluid">
+    <!-- DataTales Example -->
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+            <h6 class="m-0 font-weight-bold text-primary">Danh sách thể loại</h6>
+
+            <a href="@Url.Action("Create", "QlTheLoai")" class="btn btn-primary">Thêm mới</a>
+
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                    <thead>
+                        <tr>
+                            <th>Mã thể loại</th>
+                            <th>Tên thể loại</th>
+                            <th>Thao tác</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        @foreach (var theLoai in Model)
+                        {
+                            <tr>
+                                <td>@theLoai.Matheloai</td>
+                                <td>@theLoai.Tentheloai</td>
+                                <td>
+                                    <a asp-controller="QlTheLoai" asp-action="Delete" asp-route-id="@theLoai.Matheloai">
+                                       <i class="fas fa-trash-alt">
+                                    </a>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+
+
+                </table>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+

@@ -1,0 +1,62 @@
+﻿if (chiTietSach == null)
+                {
+                    // Tìm ChiTietSach có ngày trả gần nhất
+                    var nearestReturnChiTietSach = db.ChiTietSaches
+                                                    .Where(cts => cts.Masach == ms)
+                                                    .Join(db.Chitietphieumuons,
+                                                          cts => cts.Macthd,
+                                                          ctpm => ctpm.Macthd,
+                                                          (cts, ctpm) => new { cts, ctpm })
+                                                    .Where(x => x.ctpm.MaphieumuonNavigation.Trangthai == "PHIEUMUON" || x.ctpm.MaphieumuonNavigation.Trangthai == "PHIEUDAT" || x.ctpm.MaphieumuonNavigation.Trangthai == "DADUYET")
+                                                    .OrderBy(x => x.ctpm.MaphieumuonNavigation.Ngaytra)
+                                                    .Select(x => new { x.cts, x.ctpm.MaphieumuonNavigation.Ngaytra })
+                                                    .FirstOrDefault();
+                    var nearestReturnChiTietSach1 = db.ChiTietSaches
+                                                    .Where(cts => cts.Masach == ms)
+                                                    .Join(db.Chitietphieumuons,
+                                                          cts => cts.Macthd,
+                                                          ctpm => ctpm.Macthd,
+                                                          (cts, ctpm) => new { cts, ctpm })
+                                                    .Where(x => x.ctpm.MaphieumuonNavigation.Trangthai == "PHIEUMUON" &&
+                                                    !db.Chitietphieumuons
+                                                    .Where(ctpm => ctpm.Macthd == x.cts.Macthd)
+                                                    .Any(ctpm => ctpm.MaphieumuonNavigation.Trangthai == "PHIEUDAT"|| ctpm.MaphieumuonNavigation.Trangthai == "DADUYET"))
+
+                                                    .OrderBy(x => x.ctpm.MaphieumuonNavigation.Ngaytra)
+                                                    .Select(x => new { x.cts, x.ctpm.MaphieumuonNavigation.Ngaytra })
+                                                    .FirstOrDefault();
+                    var nearestReturnChiTietSach2 = db.ChiTietSaches
+                                                    .Where(cts => cts.Masach == ms)
+                                                    .Join(db.Chitietphieumuons,
+                                                          cts => cts.Macthd,
+                                                          ctpm => ctpm.Macthd,
+                                                          (cts, ctpm) => new { cts, ctpm })
+                                                    .Where(x => x.ctpm.MaphieumuonNavigation.Trangthai == "PHIEUMUON" &&
+                                                    !db.Chitietphieumuons
+                                                    .Where(ctpm => ctpm.Macthd == x.cts.Macthd)
+                                                    .Any(ctpm => ctpm.MaphieumuonNavigation.Trangthai == "PHIEUDAT" || ctpm.MaphieumuonNavigation.Trangthai == "DADUYET"))
+
+
+                    if (nearestReturnChiTietSach == null)
+                    {
+                        return Json(new { success = false, message = "Sách này không có sẵn" });
+                    }
+
+                    // Hiển thị thông báo để người dùng chọn mượn hoặc không
+                    return Json(new
+                    {
+                        success = false,
+                        message = $"Sách này đã hết. Quyển sách được trả gần nhất vào ngày {nearestReturnChiTietSach1.Ngaytra:dd/MM/yyyy}. Bạn có muốn đặt không?",
+                        macthd = nearestReturnChiTietSach.cts.Macthd
+                    });
+                    else if (nearestReturnChiTietSach2 == null)
+                    {
+                        return Json(new { success = false, message = "Sách này không có sẵn" });
+                    }
+                    return Json(new
+                    {
+                        success = false,
+                        message = $"Sách này đã hết.",
+                        
+                    });
+                }

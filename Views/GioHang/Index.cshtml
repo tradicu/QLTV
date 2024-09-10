@@ -1,0 +1,121 @@
+﻿@using Microsoft.AspNetCore.Http
+@model List<DATN_LiBrary.ModelViews.CartItem>
+
+@{
+    ViewData["Title"] = "giohang";
+    Layout = "~/Views/Shared/_LayoutIndexUsers.cshtml";
+
+    DoanContext db = new DoanContext();
+    var lstSanPham = db.Saches.ToList();
+}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+<section class="hero-section position-relative padding-large"
+         style="background-image:  url(../layoutUser/images/banner-image-bg-1.jpg); background-size: cover; background-repeat: no-repeat; background-position: center; height: 400px;">
+    <div class="hero-content">
+        <div class="container">
+            <div class="row">
+                <div class="text-center">
+                    <h1>Cart</h1>
+                    <div class="breadcrumbs">
+                        <span class="item">
+                            <a href="index.html">Home > </a>
+                        </span>
+                        <span class="item text-decoration-underline">Cart</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="cart padding-large">
+    <div class="container">
+       
+            <div class="row">
+                @if (Model != null && Model.Count() > 0)
+            {
+                <div class="cart-table">
+                    <div class="cart-header border-bottom border-top">
+                        <div class="row d-flex text-capitalize">
+                            <h4 class="col-lg-4 py-3 m-0">Sản phẩm</h4>
+                            <h4 class="col-lg-3 py-3 m-0">Số lượng</h4>
+                            <h4 class="col-lg-4 py-3 m-0">Xóa</h4>
+                        </div>
+                    </div>
+                    @foreach (var item in Model)
+                    {
+                        <div class="cart-item border-bottom padding-small">
+                            <div class="row align-items-center">
+                                <div class="col-lg-4 col-md-3">
+                                    <div class="cart-info d-flex gap-2 flex-wrap align-items-center">
+                                        <div class="col-lg-5">
+                                            <div class="card-image">
+                                                <img src="../layoutUser/images/sanpham1.png" alt="cart-img" class="img-fluid border rounded-3" style="width: 66.67%">
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-4">
+                                            <div class="card-detail">
+                                                <h5 class="mt-2"><a asp-controller="Home" asp-action="chitietsach" asp-route-masach="@item.masach.Masach">@item.masach.Nhande</a></h5>
+                                                @*<div class="card-price">
+                                                    <span class="price text-primary fw-light" data-currency-usd="$2000.00">$2000.00</span>
+                                                </div>*@
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 col-md-7">
+                                    <div class="row d-flex">
+                                        <div class="col-md-6">
+                                            <div class="product-quantity my-2 my-2">
+                                                <div  class="input-group product-qty align-items-center" style="max-width: 150px;">                         
+                                             
+
+                                                    @{
+                                                        var masach = lstSanPham.Where(x => x.Masach.Equals(item.masach.Masach)).SingleOrDefault();
+                                                    }
+
+                                                    <input type="number" onclick="UpdateCart(@item.masach.Masach)" id="txtsoLuong-@item.masach.Masach" name="txtsoLuong"
+                                                   class="form-control bg-white shadow border rounded-3 py-2 mx-2 input-number text-center"
+                                                   min="1" max="1"  value="@item.soLuong" @*required*@>
+                                                   
+
+
+                                                 
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="cart-cross-outline">
+                                                <a class="btn btn-primary" onclick="RemoveCart('@item.masach.Masach')">
+
+                                                    <i class="fas fa-trash"></i>
+
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-1 col-md-2">
+                                    
+                                </div>
+                            </div>
+                        </div>
+                        
+                    }
+                </div>
+       }
+            @if (Model != null && Model.Count() > 0)
+            {
+                <div class="cart-totals padding-medium pb-0">
+                    <div class="button-wrap d-flex flex-wrap gap-3">
+                        <button class="btn"><a asp-controller ="PhieuMuon" asp-action="Index">Lập phiếu đặt trước</a></button>
+                    </div>
+                </div>
+            }
+           
+        </div>
+       
+    </div>
+</section>
+

@@ -1,0 +1,40 @@
+﻿@model DATN_LiBrary.Models.Phieuphat
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Views/Shared/LayoutIndexAdmin.cshtml";
+}
+<div class="row">
+    <div class="col-md-4">
+        <form asp-controller="PhieuPhat" asp-action="Create" method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            <input type="hidden" name="maPhieuMuon" value="@ViewBag.MaPhieuMuon" />
+            <div class="form-group">
+                <label asp-for="Maphieuphat" class="control-label"></label>
+                <input asp-for="Maphieuphat" class="form-control" value="@ViewBag.mpp" />
+                <span asp-validation-for="Maphieuphat" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Lydo" class="control-label"></label>
+                <input asp-for="Lydo" class="form-control" />
+                <span asp-validation-for="Lydo" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Sotienphat" class="control-label"></label>
+                <input asp-for="Sotienphat" class="form-control" />
+                <span asp-validation-for="Sotienphat" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Ngayphat" class="control-label"></label>
+                <input asp-for="Ngayphat" class="form-control" type="date" />
+                <span asp-validation-for="Ngayphat" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>

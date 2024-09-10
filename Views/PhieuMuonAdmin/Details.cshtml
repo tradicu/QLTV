@@ -1,0 +1,408 @@
+﻿@using Microsoft.AspNetCore.Http
+@using Microsoft.EntityFrameworkCore
+@model IEnumerable<DATN_LiBrary.Models.PhieuMuon>
+@{
+    ViewData["Title"] = "Details";
+    Layout = "~/Views/Shared/LayoutIndexAdmin.cshtml";
+    var phieuMuon = Model.FirstOrDefault();
+
+}
+<style>
+    .overdue {
+        color: red !important; 
+    }
+
+</style>
+<section class="checkout-wrap padding-large">
+    <div class="container">
+        @* <form class="form-group" asp-controller="Home" asp-action="Details" >*@
+        <div class="row d-flex flex-wrap">
+            <div class="col-lg-12">
+                <h3 class="mb-3 text-center">Chi tiết phiếu đặt  </h3>
+                @if (phieuMuon.Trangthai == "PHIEUMUON")
+                {
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <label>Mã người lập </label>
+                            <input id="manguoidung" class="form-control mt-2 mb-4 ps-3 " value="@phieuMuon?.ManguoidungNavigation?.Manguoidung" readonly>
+                        </div>
+
+                        <div class="col-lg-6">
+                            <label>Tên người lập</label>
+                            <input type="text" id="tennguoidung" class="form-control mt-2 mb-4 ps-3 "
+                               value="@phieuMuon?.ManguoidungNavigation?.Ten" readonly>
+                        </div>
+                    </div>
+                }
+                @if (phieuMuon.Trangthai == "HOANTHANH")
+                    {
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <label>Mã người tiếp nhận </label>
+                                <input id="manguoidung" class="form-control mt-2 mb-4 ps-3 " value="@phieuMuon?.ManguoidungNavigation?.Manguoidung" readonly>
+                            </div>
+
+                            <div class="col-lg-6">
+                                <label>Tên người tiếp nhận</label>
+                                <input type="text" id="tennguoidung" class="form-control mt-2 mb-4 ps-3 "
+                               value="@phieuMuon?.ManguoidungNavigation?.Ten" readonly>
+                            </div>
+                        </div>
+                    }
+                    @if (phieuMuon.Trangthai == "KHONGDUYET")
+                    {
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <label>Mã người thao tác </label>
+                                <input id="manguoidung" class="form-control mt-2 mb-4 ps-3 " value="@phieuMuon?.ManguoidungNavigation?.Manguoidung" readonly>
+                            </div>
+
+                            <div class="col-lg-6">
+                                <label>Tên người thao tác</label>
+                                <input type="text" id="tennguoidung" class="form-control mt-2 mb-4 ps-3 "
+                               value="@phieuMuon?.ManguoidungNavigation?.Ten" readonly>
+                            </div>
+                        </div>
+                    }
+                @if (phieuMuon.Trangthai == "DADUYET")
+                {
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <label>Mã người thao tác </label>
+                            <input id="manguoidung" class="form-control mt-2 mb-4 ps-3 " value="@phieuMuon?.ManguoidungNavigation?.Manguoidung" readonly>
+                        </div>
+
+                        <div class="col-lg-6">
+                            <label>Tên người thao tác</label>
+                            <input type="text" id="tennguoidung" class="form-control mt-2 mb-4 ps-3 "
+                               value="@phieuMuon?.ManguoidungNavigation?.Ten" readonly>
+                        </div>
+                    </div>
+                }
+                @if (phieuMuon.Trangthai == "DAHUY")
+                {
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <label>Mã người thao tác </label>
+                            <input id="manguoidung" class="form-control mt-2 mb-4 ps-3 " value="@phieuMuon?.ManguoidungNavigation?.Manguoidung" readonly>
+                        </div>
+
+                        <div class="col-lg-6">
+                            <label>Tên người thao tác</label>
+                            <input type="text" id="tennguoidung" class="form-control mt-2 mb-4 ps-3 "
+                               value="@phieuMuon?.ManguoidungNavigation?.Ten" readonly>
+                        </div>
+                    </div>
+                }
+                <div class="row">
+                        <div class="col-lg-3">
+                            <label>Họ và tên </label>
+                            <input id="fname" class="form-control mt-2 mb-4 ps-3 " value="@phieuMuon?.ManguoimuonNavigation?.Ten" readonly>
+                        </div>
+                        <div class="col-lg-3">
+                            <label>Mã sinh viên</label>
+                            <input type="text" id="lname" class="form-control mt-2 mb-4 ps-3 "
+                               value="@phieuMuon.ManguoimuonNavigation?.Manguoimuon" readonly>
+                        </div>
+                        <div class="col-lg-3">
+                            <label>Khoa</label>
+                            <input type="text" id="cname" class="form-control mt-2 mb-4 ps-3 " value="@phieuMuon.ManguoimuonNavigation?.Khoa" readonly>
+                        </div>
+                        <div class="col-lg-3">
+                            <label>Khoá</label>
+                            <input type="text" id="cname" class="form-control mt-2 mb-4 ps-3 " value="@phieuMuon.ManguoimuonNavigation?.Khoas" readonly>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-4">
+                            <label>Ngày gửi</label>
+                            <input type="Date" value="@phieuMuon?.Ngaytao?.ToString("yyyy-MM-dd")" readonly>
+                        </div>
+                        <div class="col-lg-4">
+                            <label>Ngày mượn</label>
+                            <input type="Date" name="ngaymuon" value="@phieuMuon.Ngaymuon?.ToString("yyyy-MM-dd")" readonly>
+                        </div>
+                        <div class="col-lg-4">
+                            <label>Ngày trả</label>
+
+                        <input type="date" name="ngaytra" value="@phieuMuon.Ngaytra?.ToString("yyyy-MM-dd")" readonly class="overdue">
+                        
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-1">
+                            <label>STT</label>
+                        </div>
+                        <div class="col-lg-9">
+                            <label>Nhan đề</label>
+                        </div>
+                        <div class="col-lg-2">
+                            <label>Số lượng</label>
+                        </div>
+                    </div>
+                @{
+                    int counter = 1;
+                    @foreach (var sach in Model?.SelectMany(pm => pm.Chitietphieumuons.Where(ct => ct.MacthdNavigation.Trangthai != "PHIEUMUON" || ct.MacthdNavigation.Trangthai != "PHIEUDAT").Select(ct => ct.MacthdNavigation.MasachNavigation)))
+                        {
+                            <div class="row">
+                                <div class="col-lg-1">
+                                    <input id="stt_@counter" name="stt_@counter" class="form-control mt-2 mb-4 ps-3" value="@counter" readonly>
+                                </div>
+                                <div class="col-lg-9">
+                                    <input id="nhande_@counter" name="nhande_@counter" class="form-control mt-2 mb-4 ps-3" value="@sach.Nhande" readonly>
+                                </div>
+                                <div class="col-lg-2">
+                                    <input id="soluong_@counter" name="soluong_@counter" class="form-control mt-2 mb-4 ps-3" value="1" readonly>
+                                </div>
+                            </div>
+                            counter++;
+                        }
+                    }
+                
+
+
+
+
+            
+
+
+            </div>
+
+
+            <div class="cart-totals padding-medium pb-0">
+
+                @if (phieuMuon.Trangthai == "PHIEUMUON")
+                {
+                    <form id="editForm" onsubmit="submitEditRequest(event)">
+                        <input type="hidden" name="id" value="@phieuMuon.Maphieumuon" />
+                        <div class="button-wrap mt-3">
+                            <button type="submit" class="btn">Trả sách</button>
+                        </div>
+                    </form>
+                    <form id="editForm" onsubmit="redirectToPenaltyPage1(event)">
+                        <input type="hidden" name="id" value="@phieuMuon.Maphieumuon" />
+                        <div class="button-wrap mt-3">
+                            <button type="submit" class="btn">Tạo phiếu phạt</button>
+                        </div>
+                    </form>
+                }
+                @if (phieuMuon.Trangthai == "DADUYET")
+                {
+                    <form id="editForm" onsubmit="submitPhieuMuonRequest(event)">
+                        <input type="hidden" name="id" value="@phieuMuon.Maphieumuon" />
+                        <div class="button-wrap mt-3">
+                            <button type="submit" class="btn">Lập phiếu mượn</button>
+                        </div>
+                    </form>
+
+                    <form id="cancelForm" onsubmit="cancelApprovedRequest(event)">
+                        <input type="hidden" name="id" value="@phieuMuon.Maphieumuon" />
+                        <div class="button-wrap mt-3">
+                            <button type="submit" class="btn">Hủy phiếu đã duyệt</button>
+                        </div>
+                    </form>
+                }
+                @if (phieuMuon.Maphieuphat != null)
+                {
+                    <a asp-controller="PhieuPhat" asp-action="Index" asp-route-id="@phieuMuon.Maphieumuon" >
+                        <i class="fas fa-exclamation-circle"></i> 
+                    </a>
+                }
+                
+               
+
+
+            </div>
+
+
+        </div>
+        @* </form>*@
+    </div>
+</section>
+
+<script src="~/vendor/jquery/jquery.min.js"></script>
+    <script src="~/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="~/vendor/chart.js/Chart.min.js"></script>
+    <script src="~/js/chart-area-demo.js"></script>
+    <script src="~/js/chart-pie-demo.js"></script>
+<!-- Nút kích hoạt yêu cầu chỉnh sửa -->
+<script>
+    function submitEditRequest(event) {
+        event.preventDefault();
+        var id = $("input[name='id']").val();
+        console.log("Id của phiếu mượn:", id);
+
+        $.ajax({
+            url: '/PhieuMuonAdmin/Edit',
+            type: 'POST',
+            data: { id: id },
+            success: function (response) {
+                console.log("Response từ server:", response);
+                if (response.success) {
+                    if (response.isLate === true) {
+                        // Nếu trả sách muộn, hiển thị modal hỏi lập phiếu phạt
+                        $('#penaltyModal').modal('show');
+                    } else {
+                        // Nếu không trả sách muộn, hiển thị modal thông báo thành công và chuyển hướng sau 3 giây
+                        $('#successModal').modal('show');
+                        setTimeout(function () {
+                            window.location.href = '/HomeAdmin/Index';
+                        }, 3000);
+                    }
+                } else {
+                    alert("Thao tác không thành công! Lỗi: " + response.error);
+                }
+            },
+            error: function () {
+                alert("Đã xảy ra lỗi trong quá trình thực hiện thao tác!");
+            }
+        });
+    }
+
+    function redirectToPenaltyPage() {
+        window.location.href = '/PhieuPhat/Create'; // Chuyển hướng tới trang lập phiếu phạt
+    }
+
+    function redirectToPenaltyPage1(event) {
+        event.preventDefault();
+        var id = $("input[name='id']").val(); // Lấy mã phiếu mượn từ trang hiện tại
+        var url = '/PhieuPhat/Create?maPhieuMuon=' + id; // Tạo URL của trang lập phiếu phạt với mã phiếu mượn
+        window.location.href = url; // Chuyển hướng tới trang lập phiếu phạt với tham số mã phiếu mượn
+    }
+
+    function cancelApprovedRequest(event) {
+        event.preventDefault();
+        var id = $("input[name='id']").val();
+        console.log("Id của phiếu mượn:", id);
+
+        if (confirm("Bạn có chắc chắn muốn hủy phiếu đã duyệt?")) {
+            $.ajax({
+                url: '/PhieuMuonAdmin/CancelApproved',
+                type: 'POST',
+                data: { id: id },
+                success: function (response) {
+                    if (response.success) {
+                        alert("Hủy phiếu đã duyệt thành công!");
+                        window.location.reload(); // Làm mới trang sau khi hủy thành công
+                    } else {
+                        alert("Không thể hủy phiếu đã duyệt! Lỗi: " + response.error);
+                    }
+                },
+                error: function () {
+                    alert("Đã xảy ra lỗi khi thực hiện hành động hủy phiếu đã duyệt!");
+                }
+            });
+        }
+    }
+
+    function submitPhieuMuonRequest(event) {
+        event.preventDefault(); // Ngăn form submit mặc định
+
+        var id = $("input[name='id']").val();
+        console.log("Id của phiếu mượn:", id);
+
+        $.ajax({
+            url: '/PhieuMuonAdmin/SubmitPhieuMuon', 
+            type: 'POST',
+            data: { id: id },
+            success: function (response) {
+                console.log("Response từ server:", response);
+                if (response.success) {
+                    alert("Lập phiếu mượn thành công!");
+                    // Thực hiện các hành động khác nếu cần
+                    window.location.href = '/HomeAdmin/Index'; 
+                } else {
+                    alert("Thao tác không thành công! Lỗi: " + response.error);
+                }
+            },
+            error: function () {
+                alert("Đã xảy ra lỗi trong quá trình thực hiện thao tác!");
+            }
+        });
+    }
+</script>
+
+
+
+
+
+
+<!-- Modal hỏi lập phiếu phạt -->
+<div class="modal fade" id="penaltyModal" tabindex="-1" role="dialog" aria-labelledby="penaltyModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="penaltyModalLabel">Trả sách </h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                Bạn có muốn lập phiếu phạt không?
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Không</button>
+                <button type="button" class="btn btn-primary" onclick="redirectToPenaltyPage('@phieuMuon.Maphieumuon')">Có</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal thông báo thành công -->
+<div class="modal fade" id="successModal" tabindex="-1" role="dialog" aria-labelledby="successModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="successModalLabel">Trả sách thành công</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                Phiếu @phieuMuon.Maphieumuon đã được xử lý thành công.
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        // Lấy ngày trả từ input
+        var ngayTraInput = document.querySelector('input[name="ngaytra"]');
+        if (ngayTraInput) {
+            var ngayTraValue = ngayTraInput.value;
+
+            // Kiểm tra nếu ngày trả không rỗng và có định dạng hợp lệ
+            if (ngayTraValue) {
+                // Tạo đối tượng Date từ ngày trả
+                var ngayTra = new Date(ngayTraValue);
+
+                // Tạo ngày hiện tại với cùng định dạng như ngày trả
+                var ngayHienTai = new Date();
+                ngayHienTai.setFullYear(ngayTra.getFullYear());
+                ngayHienTai.setMonth(ngayTra.getMonth());
+                ngayHienTai.setDate(ngayTra.getDate());
+
+                console.log("Ngay tra value:", ngayTraValue);
+                console.log("Ngay tra:", ngayTra);
+                console.log("Ngay hien tai:", ngayHienTai);
+
+                // So sánh ngày trả với ngày hiện tại (chỉ quan tâm đến ngày tháng)
+                if (ngayHienTai > ngayTra) { // Ngày hôm nay lớn hơn ngày trả
+                    // Áp dụng class 'overdue' nếu quá ngày trả
+                    ngayTraInput.classList.add('overdue');
+                }
+            }
+        }
+    });
+</script>
+<script>
+    // Điều hướng khi nhấn nút "Không"
+    document.addEventListener('DOMContentLoaded', function () {
+        var btnKhong = document.querySelector('#penaltyModal button.btn-secondary');
+        if (btnKhong) {
+            btnKhong.addEventListener('click', function () {
+                window.location.href = '/HomeAdmin/Index'; // Điều hướng về trang HomeAdmin/Index
+            });
+        }
+    });
+</script>

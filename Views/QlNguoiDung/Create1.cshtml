@@ -1,0 +1,67 @@
+﻿@model NguoiDung
+@{
+    ViewData["Title"] = "Create1";
+    Layout = "~/Views/Shared/LayoutAdmin.cshtml";
+}
+<div class="row">
+    <div class="col-md-6">
+        <form asp-action="Create1" method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            <div class="form-group">
+                <label asp-for="Manguoidung" class="control-label"></label>
+                <input asp-for="Manguoidung" class="form-control" value="@ViewBag.newND" />
+                <span asp-validation-for="Manguoidung" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Ten" class="control-label"></label>
+                <input asp-for="Ten" class="form-control" />
+                <span asp-validation-for="Ten" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Matkhau" class="control-label"></label>
+                <input asp-for="Matkhau" type="password" class="form-control" />
+                <span asp-validation-for="Matkhau" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Email" class="control-label"></label>
+                <input asp-for="Email" class="form-control" />
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Gioitinh" class="control-label"></label>
+                <select asp-for="Gioitinh" class="form-control">
+                    <option value="1">Nam</option>
+                    <option value="0">Nữ</option>
+                </select>
+                <span asp-validation-for="Gioitinh" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Ngaysinh" class="control-label"></label>
+                <input asp-for="Ngaysinh" type="date" class="form-control" />
+                <span asp-validation-for="Ngaysinh" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Sodienthoai" class="control-label"></label>
+                <input asp-for="Sodienthoai" class="form-control" />
+                <span asp-validation-for="Sodienthoai" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Diachi" class="control-label"></label>
+                <input asp-for="Diachi" class="form-control" />
+                <span asp-validation-for="Diachi" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+

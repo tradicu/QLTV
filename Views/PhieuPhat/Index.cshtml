@@ -1,0 +1,25 @@
+﻿@model IEnumerable<DATN_LiBrary.Models.PhieuMuon>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/LayoutIndexAdmin.cshtml";
+}
+@foreach (var phieuPhat in Model)
+{
+    <div>
+        <dl class="row">
+            <dt class="col-sm-3">Mã Phiếu Phạt:</dt>
+            <dd class="col-sm-9">@phieuPhat.Maphieuphat</dd>
+
+            <dt class="col-sm-3">Lý Do:</dt>
+            <dd class="col-sm-9">@phieuPhat?.MaphieuphatNavigation?.Lydo</dd>
+
+            <dt class="col-sm-3">Số Tiền Phạt:</dt>
+            <dd class="col-sm-9">@phieuPhat?.MaphieuphatNavigation?.Sotienphat</dd>
+
+            <dt class="col-sm-3">Ngày Phạt:</dt>
+            <dd class="col-sm-9">@phieuPhat?.MaphieuphatNavigation?.Ngayphat?.ToString("yyyy-MM-dd")</dd>
+        </dl>
+    </div>
+}
+
+

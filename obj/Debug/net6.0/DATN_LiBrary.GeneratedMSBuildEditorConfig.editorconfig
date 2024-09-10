@@ -1,0 +1,285 @@
+is_global = true
+build_property.TargetFramework = net6.0
+build_property.TargetPlatformMinVersion = 
+build_property.UsingMicrosoftNETSdkWeb = true
+build_property.ProjectTypeGuids = 
+build_property.InvariantGlobalization = 
+build_property.PlatformNeutralAssembly = 
+build_property.EnforceExtendedAnalyzerRules = 
+build_property._SupportedPlatformList = Linux,macOS,Windows
+build_property.RootNamespace = DATN_LiBrary
+build_property.RootNamespace = DATN_LiBrary
+build_property.ProjectDir = C:\Users\Tran Dieu Quynh\source\repos\DATN_LiBrary\
+build_property.RazorLangVersion = 6.0
+build_property.SupportLocalizedComponentNames = 
+build_property.GenerateRazorMetadataSourceChecksumAttributes = 
+build_property.MSBuildProjectDirectory = C:\Users\Tran Dieu Quynh\source\repos\DATN_LiBrary
+build_property._RazorSourceGeneratorDebug = 
+
+[C:/Users/Tran Dieu Quynh/source/repos/DATN_LiBrary/Views/GioHang/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcR2lvSGFuZ1xJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Tran Dieu Quynh/source/repos/DATN_LiBrary/Views/HomeAdmin/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZUFkbWluXERldGFpbHMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Tran Dieu Quynh/source/repos/DATN_LiBrary/Views/HomeAdmin/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZUFkbWluXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Tran Dieu Quynh/source/repos/DATN_LiBrary/Views/Home/ChangePassword.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxDaGFuZ2VQYXNzd29yZC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Tran Dieu Quynh/source/repos/DATN_LiBrary/Views/Home/ChangePassword1.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxDaGFuZ2VQYXNzd29yZDEuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Tran Dieu Quynh/source/repos/DATN_LiBrary/Views/Home/chitietsach.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxjaGl0aWV0c2FjaC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Tran Dieu Quynh/source/repos/DATN_LiBrary/Views/Home/GiangVien.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxHaWFuZ1ZpZW4uY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Tran Dieu Quynh/source/repos/DATN_LiBrary/Views/Home/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Tran Dieu Quynh/source/repos/DATN_LiBrary/Views/Home/Privacy.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Tran Dieu Quynh/source/repos/DATN_LiBrary/Views/Home/QuyDinh.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxRdXlEaW5oLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Tran Dieu Quynh/source/repos/DATN_LiBrary/Views/Home/QuyTrinh.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxRdXlUcmluaC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Tran Dieu Quynh/source/repos/DATN_LiBrary/Views/Home/SanPhamTheoTheLoai.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxTYW5QaGFtVGhlb1RoZUxvYWkuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Tran Dieu Quynh/source/repos/DATN_LiBrary/Views/Home/Search.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxTZWFyY2guY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Tran Dieu Quynh/source/repos/DATN_LiBrary/Views/Home/tracuu.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVx0cmFjdXUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Tran Dieu Quynh/source/repos/DATN_LiBrary/Views/PhieuMuonAdmin/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGhpZXVNdW9uQWRtaW5cQ3JlYXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Tran Dieu Quynh/source/repos/DATN_LiBrary/Views/PhieuMuonAdmin/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGhpZXVNdW9uQWRtaW5cRGV0YWlscy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Tran Dieu Quynh/source/repos/DATN_LiBrary/Views/PhieuMuonAdmin/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGhpZXVNdW9uQWRtaW5cSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Tran Dieu Quynh/source/repos/DATN_LiBrary/Views/PhieuMuonAdmin/Test.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGhpZXVNdW9uQWRtaW5cVGVzdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Tran Dieu Quynh/source/repos/DATN_LiBrary/Views/PhieuMuon/ChiTiet.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGhpZXVNdW9uXENoaVRpZXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Tran Dieu Quynh/source/repos/DATN_LiBrary/Views/PhieuMuon/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGhpZXVNdW9uXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Tran Dieu Quynh/source/repos/DATN_LiBrary/Views/PhieuMuon/LichSu.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGhpZXVNdW9uXExpY2hTdS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Tran Dieu Quynh/source/repos/DATN_LiBrary/Views/PhieuPhat/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGhpZXVQaGF0XENyZWF0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Tran Dieu Quynh/source/repos/DATN_LiBrary/Views/PhieuPhat/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGhpZXVQaGF0XEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Tran Dieu Quynh/source/repos/DATN_LiBrary/Views/QlNguoiDung/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUWxOZ3VvaUR1bmdcQ3JlYXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Tran Dieu Quynh/source/repos/DATN_LiBrary/Views/QlNguoiDung/Create1.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUWxOZ3VvaUR1bmdcQ3JlYXRlMS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Tran Dieu Quynh/source/repos/DATN_LiBrary/Views/QlNguoiDung/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUWxOZ3VvaUR1bmdcRGV0YWlscy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Tran Dieu Quynh/source/repos/DATN_LiBrary/Views/QlNguoiDung/Details1.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUWxOZ3VvaUR1bmdcRGV0YWlsczEuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Tran Dieu Quynh/source/repos/DATN_LiBrary/Views/QlNguoiDung/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUWxOZ3VvaUR1bmdcRWRpdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Tran Dieu Quynh/source/repos/DATN_LiBrary/Views/QlNguoiDung/Edit1.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUWxOZ3VvaUR1bmdcRWRpdDEuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Tran Dieu Quynh/source/repos/DATN_LiBrary/Views/QlNguoiDung/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUWxOZ3VvaUR1bmdcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Tran Dieu Quynh/source/repos/DATN_LiBrary/Views/QlNguoiDung/Index1.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUWxOZ3VvaUR1bmdcSW5kZXgxLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Tran Dieu Quynh/source/repos/DATN_LiBrary/Views/QlNguoiMuon/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUWxOZ3VvaU11b25cQ3JlYXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Tran Dieu Quynh/source/repos/DATN_LiBrary/Views/QlNguoiMuon/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUWxOZ3VvaU11b25cSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Tran Dieu Quynh/source/repos/DATN_LiBrary/Views/QlNhaXuatBan/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUWxOaGFYdWF0QmFuXENyZWF0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Tran Dieu Quynh/source/repos/DATN_LiBrary/Views/QlNhaXuatBan/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUWxOaGFYdWF0QmFuXERlbGV0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Tran Dieu Quynh/source/repos/DATN_LiBrary/Views/QlNhaXuatBan/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUWxOaGFYdWF0QmFuXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Tran Dieu Quynh/source/repos/DATN_LiBrary/Views/QlTacGia/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUWxUYWNHaWFcQ3JlYXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Tran Dieu Quynh/source/repos/DATN_LiBrary/Views/QlTacGia/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUWxUYWNHaWFcRGVsZXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Tran Dieu Quynh/source/repos/DATN_LiBrary/Views/QlTacGia/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUWxUYWNHaWFcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Tran Dieu Quynh/source/repos/DATN_LiBrary/Views/QlTheLoai/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUWxUaGVMb2FpXENyZWF0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Tran Dieu Quynh/source/repos/DATN_LiBrary/Views/QlTheLoai/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUWxUaGVMb2FpXERlbGV0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Tran Dieu Quynh/source/repos/DATN_LiBrary/Views/QlTheLoai/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUWxUaGVMb2FpXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Tran Dieu Quynh/source/repos/DATN_LiBrary/Views/SachAdmin/ChiTiet.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2FjaEFkbWluXENoaVRpZXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Tran Dieu Quynh/source/repos/DATN_LiBrary/Views/SachAdmin/ChiTiet1.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2FjaEFkbWluXENoaVRpZXQxLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Tran Dieu Quynh/source/repos/DATN_LiBrary/Views/SachAdmin/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2FjaEFkbWluXENyZWF0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Tran Dieu Quynh/source/repos/DATN_LiBrary/Views/SachAdmin/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2FjaEFkbWluXERldGFpbHMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Tran Dieu Quynh/source/repos/DATN_LiBrary/Views/SachAdmin/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2FjaEFkbWluXEVkaXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Tran Dieu Quynh/source/repos/DATN_LiBrary/Views/SachAdmin/EditChiTiet.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2FjaEFkbWluXEVkaXRDaGlUaWV0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Tran Dieu Quynh/source/repos/DATN_LiBrary/Views/SachAdmin/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2FjaEFkbWluXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Tran Dieu Quynh/source/repos/DATN_LiBrary/Views/SachAdmin/Index1.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2FjaEFkbWluXEluZGV4MS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Tran Dieu Quynh/source/repos/DATN_LiBrary/Views/Shared/Components/TheLoaiMenu/Default.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXENvbXBvbmVudHNcVGhlTG9haU1lbnVcRGVmYXVsdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Tran Dieu Quynh/source/repos/DATN_LiBrary/Views/Shared/Error.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Tran Dieu Quynh/source/repos/DATN_LiBrary/Views/Shared/FooterIndex.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEZvb3RlckluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Tran Dieu Quynh/source/repos/DATN_LiBrary/Views/Shared/HeaderIndex.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEhlYWRlckluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Tran Dieu Quynh/source/repos/DATN_LiBrary/Views/Shared/LayoutAdmin.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXExheW91dEFkbWluLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Tran Dieu Quynh/source/repos/DATN_LiBrary/Views/Shared/LayoutIndexAdmin.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXExheW91dEluZGV4QWRtaW4uY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Tran Dieu Quynh/source/repos/DATN_LiBrary/Views/Shared/NaBa.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXE5hQmEuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Tran Dieu Quynh/source/repos/DATN_LiBrary/Views/Shared/narbar.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXG5hcmJhci5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Tran Dieu Quynh/source/repos/DATN_LiBrary/Views/Shared/SliBar.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXFNsaUJhci5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Tran Dieu Quynh/source/repos/DATN_LiBrary/Views/Shared/slidebar.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXHNsaWRlYmFyLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Tran Dieu Quynh/source/repos/DATN_LiBrary/Views/Shared/View.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXFZpZXcuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Tran Dieu Quynh/source/repos/DATN_LiBrary/Views/Shared/_LayoutIndexUsers.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXRJbmRleFVzZXJzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Tran Dieu Quynh/source/repos/DATN_LiBrary/Views/Shared/_ValidationScriptsPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Tran Dieu Quynh/source/repos/DATN_LiBrary/Views/ThongKe/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGhvbmdLZVxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Tran Dieu Quynh/source/repos/DATN_LiBrary/Views/_ViewImports.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Tran Dieu Quynh/source/repos/DATN_LiBrary/Views/_ViewStart.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Tran Dieu Quynh/source/repos/DATN_LiBrary/Views/Shared/_Layout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = b-pcebx81g0g

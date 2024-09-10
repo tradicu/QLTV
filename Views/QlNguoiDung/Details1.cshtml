@@ -1,0 +1,67 @@
+﻿@model NguoiDung
+@{
+    ViewData["Title"] = "Details1";
+    Layout = "~/Views/Shared/LayoutAdmin.cshtml";
+}
+
+<div class="container-fluid">
+    <!-- DataTales Example -->
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+            <h6 class="m-0 font-weight-bold text-primary">Chi tiết người dùng</h6>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+
+                <div class="row">
+                    <div class="col-lg-4">
+                        <label>Mã người dùng</label>
+                        <input class="form-control" value="@Model.Manguoidung" readonly>
+                    </div>
+                    <div class="col-lg-4">
+                        <label>Tên người dùng</label>
+                        <input class="form-control" value="@Model.Ten" readonly>
+                    </div>
+                    <div class="col-lg-4">
+                        <label>Giới tính</label>
+                        <input class="form-control" value="@(Model.Gioitinh == 1 ? "NAM" : "NU")" readonly>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-6">
+                        <label>Email</label>
+                        <input class="form-control" value="@Model.Email" readonly>
+                    </div>
+
+                    <div class="col-lg-6">
+                        <label>Mật khẩu</label>
+                        <input class="form-control" value="@(Model.Matkhau == "123456" ? "123456" : "")" readonly>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-3">
+                        <label>Số điện thoại</label>
+                        <input class="form-control" value="@Model.Sodienthoai" readonly>
+                    </div>
+                    <div class="col-lg-3">
+                        <label>Địa chỉ</label>
+                        <input class="form-control" value="@Model.Diachi" readonly>
+                    </div>
+                    <div class="col-lg-3">
+                        <label>Ngày sinh</label>
+                        <input class="form-control" value="@Model.Ngaysinh" readonly>
+                    </div>
+                    <div class="col-lg-3">
+                        <label>Trạng thái</label>
+                        <input class="form-control" value="@Model.Trangthai" readonly>
+                    </div>
+                </div>
+                <div class="row">
+                    <button><a asp-controller="QlNguoiDung" asp-action="Edit1" asp-route-id="@Model.Manguoidung">Sửa</a></button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+

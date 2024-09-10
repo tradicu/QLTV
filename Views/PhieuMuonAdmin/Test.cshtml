@@ -1,0 +1,25 @@
+﻿@model List<ChiTietSach>
+
+<div class="row" id="themhang">
+    <div class="col-lg-2">
+        <input type="text" id="machitietsach" name="machitietsach" class="form-control mt-2 mb-4 ps-3" list="chiTietSachList" onchange="updateFieldsSach()" />
+        <datalist id="chiTietSachList">
+            @foreach (var item in Model)
+            {
+                    <option value="@item.Macthd"
+                    data-tensach="@item.MasachNavigation.Nhande">
+                    </option>  
+            }
+        </datalist>
+    </div>
+    <div class="col-lg-9">
+        <input type="text" id="tensach" class="form-control mt-2 mb-4 ps-3" readonly>
+    </div>
+    <div class="col-lg-1">
+        <a onclick="theemm()">
+            <i class="fas fa-plus"></i>
+        </a>
+    </div>
+</div>
+   
+

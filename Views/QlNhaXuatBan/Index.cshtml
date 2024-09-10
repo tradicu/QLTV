@@ -1,0 +1,50 @@
+﻿@model List<NhaXuatBan>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/LayoutAdmin.cshtml";
+}
+
+<div class="container-fluid">
+    <!-- DataTales Example -->
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+            <h6 class="m-0 font-weight-bold text-primary">Danh sách nhà xuất bản</h6>
+
+            <a href="@Url.Action("Create", "QlTheLoai")" class="btn btn-primary">Thêm mới</a>
+
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                    <thead>
+                        <tr>
+                            <th>Mã nhà xuất bản</th>
+                            <th>Tên nhà xuất bản</th>
+                            <th>Thao tác</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        @foreach (var nhaXuatBan in Model)
+                        {
+                                <tr>
+                                <td>@nhaXuatBan.Mnxb</td>
+                                <td>@nhaXuatBan.Tnxb</td>
+                                    <td>
+                                    <a asp-controller="QlNhaXuatBan" asp-action="Delete" asp-route-id="@nhaXuatBan.Mnxb">
+                                       <i class="fas fa-trash-alt">
+                                        </a>
+                                    
+                                    </td>
+                                </tr>
+                        }
+                    </tbody>
+
+
+                </table>
+            </div>
+        </div>
+    </div>
+
+</div>
+

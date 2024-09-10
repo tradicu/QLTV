@@ -1,0 +1,234 @@
+﻿@using X.PagedList.Mvc.Core;
+@model X.PagedList.IPagedList<Sach>
+@{
+    ViewData["Title"] = "Home Page";
+    Layout = "~/Views/Shared/_LayoutIndexUsers.cshtml";
+}
+
+<section class="hero-section position-relative padding-large" style="background-image: url(../layoutUser/images/banner-image-bg-1.jpg); background-size: cover; background-repeat: no-repeat; background-position: center; height: 400px;">
+    <div class="hero-content">
+        <div class="container">
+            <div class="row">
+                <div class="text-center">
+                    <h1>Tra cứu</h1>
+                    <div class="breadcrumbs">
+                        <span class="item">
+                            <a href="index.html">Trang chủ > </a>
+                        </span>
+                        <span class="item text-decoration-underline">Tra cứu</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<div class="shopify-grid padding-large">
+    <div class="container">
+        <div class="row flex-row-reverse g-md-5">
+            <main class="col-md-9">
+                <div class="filter-shop d-flex flex-wrap justify-content-between mb-5">
+                    <div class="col-lg-12 border rounded-3 p-2 mb-2">
+                        <div class="row">
+                            <div class=" align-item d-flex justify-content-center col-lg-3">
+                                <div class="align-item d-flex justify-content-center">
+                                    <select class="form-select" aria-label="Default select example">
+                                        <option selected>Chọn mục</option>
+                                        <option value="1">Nhan đề</option>
+                                        <option value="2">Tác giả</option>
+                                        <option value="3">Three</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-9">
+                                <div class="widget-search-bar">
+                                    <form class="d-flex border rounded-3 p-2" role="search">
+                                        <input class="form-control border-0 me-2 py-2" type="search" placeholder="Search" aria-label="Search">
+                                        <button class="btn rounded-3 p-3 d-flex align-items-center" type="submit">
+                                            <svg class="search text-light" width="18" height="18">
+                                                <use xlink:href="#search"></use>
+                                            </svg>
+                                        </button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+
+                    <div class="row product-content product-store">
+                        <div class="col-lg-3 col-md-4 mb-4 custom-col">
+
+                           
+                            @foreach (var item in Model)
+                            {
+                                <div class="card  position-relative p-4 border rounded-3">
+
+                                    <div class="row">
+                                        <div class="col-lg-3 col-md-4 mb-4 ">
+                                            <img src="../layoutUser/images/sanpham1.png" class="img-fluid shadow-sm custom-img" alt="product item">
+                                        </div>
+
+                                        <div class="col-lg-9 col-md-8 mb-4">
+
+                                            <h6 class="mt-4 mb-0 fw-bold"><a a asp-controller="Home" asp-action="chitietsach" asp-route-masach="@item.Masach">@item.Nhande</a></h6>
+
+                                            @*  <div class="review-content d-flex">
+                                        <p class="my-2 me-2 fs-6 ">@item.Mota</p>
+
+                                        </div>
+                                        <div class="review-content d-flex">
+                                        <p class="my-2 me-2 fs-6 custom-heading">Mô tả</p>
+
+                                        </div>*@
+                                            <div class="review-content d-flex">
+                                                <div class="my-2 me-2 fs-6 custom-heading" style="white-space: nowrap;">Mô tả :</div>
+                                                <div class="my-2 me-2 fs-6" style="flex: 1;">@item.Mota</div>
+
+                                            </div>
+                                            @{
+                                                string tacgias = item.Mtgs.ToArray().Length>0? item.Mtgs.ToArray()[0].Ttg:"";
+                                                string theloais = item.Matheloais.ToArray().Length>0? item.Matheloais?.ToArray()[0].Tentheloai:"";
+                                            }
+                                            @for (int i = 1; i < item.Mtgs.Count; i++)
+                                            {
+                                                tacgias += (", " + item.Mtgs.ToArray()[i].Ttg);
+                                            }
+                                            @for (int i = 1; i < item.Matheloais.Count; i++)
+                                            {
+                                                theloais += (", " + item.Matheloais.ToArray()[i].Tentheloai);
+                                            }
+                                            <div class="review-content d-flex">
+                                                <div class="my-2 me-2 fs-6 custom-heading" style="white-space: nowrap;">Tác giả :</div>
+                                                <div class="my-2 me-2 fs-6" style="flex: 1;">@tacgias</div>
+                                            </div>
+                                            <div class="review-content d-flex">
+                                                <div class="my-2 me-2 fs-6 custom-heading" style="white-space: nowrap;">Nhà xuất bản :</div>
+                                                <div class="my-2 me-2 fs-6" style="flex: 1;">@item.MnxbNavigation?.Tnxb</div>
+                                            </div>
+                                            <div class="review-content d-flex">
+                                                <div class="my-2 me-2 fs-6 custom-heading" style="white-space: nowrap;">Thể loại :</div>
+                                                <div class="my-2 me-2 fs-6" style="flex: 1;">@theloais</div>
+                                            </div>
+                                            <div class="review-content d-flex">
+                                                <div class="my-2 me-2 fs-6 custom-heading" style="white-space: nowrap;">Năm xuất bản :</div>
+                                                <div class="my-2 me-2 fs-6" style="flex: 1;">@item.Namxuatban</div>
+                                            </div>
+                                            <div class="review-content d-flex">
+                                                <div class="my-2 me-2 fs-6 custom-heading" style="white-space: nowrap;">Số trang :</div>
+                                                <div class="my-2 me-2 fs-6" style="flex: 1;">@item.Sotrang</div>
+                                            </div>
+                                            <div class="card-concern position-absolute start-0 end-0 d-flex gap-2">
+                                                @if (Context.Session.GetString("Manguoidung") != null)
+                                                {
+                                                    <button type="button" onclick="AddToCartList('@item.Masach')" class="btn btn-dark" data-bs-toggle="tooltip" data-bs-placement="top"
+                                                    data-bs-title="Tooltip on top">
+                                                        <svg class="cart">
+                                                            <use xlink:href="#cart"></use>
+                                                        </svg>
+                                                    </button>
+                                                    <a class="btn btn-dark">
+                                                        <span>
+                                                            <svg class="wishlist">
+                                                                <use xlink:href="#heart"></use>
+                                                            </svg>
+                                                        </span>
+                                                    </a>
+                                                }
+                                                else
+                                                {
+                                                    <a href="#" class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                                        <span>
+                                                            <svg class="cart" asp-controller="Home" asp-action="Login">
+                                                                <use xlink:href="#cart"></use>
+                                                            </svg>
+                                                        </span>
+                                                    </a>
+                                                    <a href="#" class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                                        <span>
+                                                            <svg class="wishlist" asp-controller="Home" asp-action="Login">
+                                                                <use xlink:href="#heart"></use>
+                                                            </svg>
+                                                        </span>
+                                                    </a>
+                                                    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                                                 aria-hidden="true">
+                                                        <div class="modal-dialog">
+
+                                                            <div class="modal-content">
+                                                                <div class="modal-header border-bottom-0">
+                                                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                                </div>
+                                                                <div class="modal-body">
+                                                                    <div class="tabs-listing">
+
+                                                                        @using (Html.BeginForm("Login", "Home", FormMethod.Post))
+                                                                        {
+                                                                            <div class="tab-content" id="nav-tabContent">
+                                                                                <div class="tab-pane fade active show" id="nav-sign-in" role="tabpanel"
+                                                                         aria-labelledby="nav-sign-in-tab">
+                                                                                    <div class="form-group py-3">
+                                                                                        <label class="mb-2" for="sign-in">Username or email address *</label>
+                                                                                        @*  <input type="text" minlength="2" name="username" placeholder="Your Username"
+                                                                            class="form-control w-100 rounded-3 p-3" required>*@
+                                                                                        <input type="text" id="email" name="email" placeholder="Email"
+                                                                                   class="form-control form-control-lg" required autofocus>
+
+                                                                                    </div>
+                                                                                    <div class="form-group pb-3">
+                                                                                        <label class="mb-2" for="sign-in">Password *</label>
+                                                                                        <input type="password" id="matkhau" name="matkhau" placeholder="Password"
+                                                                                   class="form-control form-control-lg" required>
+
+                                                                                    </div>
+                                                                                    <label class="py-3">
+                                                                                        <input type="checkbox" required="" class="d-inline">
+                                                                                        <span class="label-body">Remember me</span>
+                                                                                        <span class="label-body"><a href="#" class="fw-bold">Forgot Password</a></span>
+                                                                                    </label>
+                                                                                    <button type="submit" name="submit" class="btn btn-dark w-100 my-3">Login</button>
+                                                                                </div>
+
+                                                                            </div>
+                                                                        }
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                }
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            }
+                        </div>
+                    </div>
+                    <nav class="py-5" aria-label="Page navigation">
+                        <ul class="pagination justify-content-center gap-4">
+
+                            <li class="page-item active" aria-current="page">
+                                <span class="page-link">@Html.PagedListPager(Model,page=>Url.Action("SanPhamTheoTheLoai",new{page=page, matheloai = ViewBag.matheloai}))</span>
+                            </li>
+                            @* <li class="page-item"><a class="page-link" href="#">2</a></li>
+                            <li class="page-item"><a class="page-link" href="#">3</a></li>*@
+
+                        </ul>
+                    </nav>
+                </div>
+            </main>
+
+
+            <aside class="col-md-3">
+                <div class="sidebar ps-lg-5">
+                </div>
+                @await Component.InvokeAsync("TheLoaiMenu")
+
+            </aside>
+        </div>
+    </div>
+</div>
+
+

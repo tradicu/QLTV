@@ -1,0 +1,103 @@
+﻿@model List<Chitietphieumuon>
+@{
+    ViewData["Title"] = "ChiTiet";
+    Layout = "~/Views/Shared/_LayoutIndexUsers.cshtml";
+    var count = 1;
+    var firstDetail = Model.FirstOrDefault();
+    var trangthai = firstDetail?.MaphieumuonNavigation.Trangthai;
+    var nguoiDungTen = firstDetail?.MaphieumuonNavigation?.ManguoidungNavigation?.Ten;
+}
+<section class="hero-section position-relative padding-large" style="background-image: url(../layoutUser/images/banner-image-bg-1.jpg); background-size: cover; background-repeat: no-repeat; background-position: center; height: 400px;">
+    <div class="hero-content">
+        <div class="container">
+            <div class="row">
+                <div class="text-center">
+                    <h1>Chi tiết phiếu đặt</h1>
+                    <div class="breadcrumbs">
+                        <span class="item">
+                            <a href="index.html">Trang chủ > </a>
+                        </span>
+                        <span class="item text-decoration-underline">Lịch sử > Chi tiết phiếu đặt</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="checkout-wrap padding-large">
+    <div class="container">
+        <form class="form-group" asp-controller="PhieuMuon" asp-action="Index" method="post">
+            <div class="row d-flex flex-wrap">
+                <div class="col-lg-12">
+                    <h3 class="mb-3 text-center">Chi tiết phiếu đặt</h3>
+
+                    @if (trangthai == "PHIEUMUON")
+                    {
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <label>Người lập phiếu</label>
+                                <input class="form-control" value="@nguoiDungTen" readonly />
+                            </div>
+                        </div>
+                    }
+                    @if (trangthai == "HOANTHANH")
+                    {
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <label>Người tiếp nhận trả sách</label>
+                                <input class="form-control" value="@nguoiDungTen" readonly />
+                            </div>
+                        </div>
+                    }
+                    <div class="row">
+                        @if (trangthai == "PHIEUDAT" || trangthai == "DAHUY" || trangthai == "BIHUY")
+                        {
+                            <div class="col-lg-4">
+                                <label for="currentDateDate">Ngày gửi</label>
+                                <input type="date" id="currentDateDate" class="form-control" value='@(firstDetail.MaphieumuonNavigation.Ngaytao.HasValue ? firstDetail.MaphieumuonNavigation.Ngaytao.Value.ToString("yyyy-MM-dd") : "")' readonly />
+                            </div>
+                        }
+                        <div class="col-lg-4">
+                            <label for="datepickerBorrow">Ngày mượn</label>
+                            <input type="date" id="datepickerBorrow" name="ngaymuon" class="form-control" value='@(firstDetail.MaphieumuonNavigation.Ngaymuon.HasValue ? firstDetail.MaphieumuonNavigation.Ngaymuon.Value.ToString("yyyy-MM-dd") : "")' readonly />
+                        </div>
+                        <div class="col-lg-4">
+                            <label for="datepickerReturn">Ngày trả</label>
+                            <input type="date" id="datepickerReturn" name="ngaytra" class="form-control" value='@(firstDetail.MaphieumuonNavigation.Ngaytra.HasValue ? firstDetail.MaphieumuonNavigation.Ngaytra.Value.ToString("yyyy-MM-dd") : "")' readonly />
+                        </div>
+                    </div>
+
+                    <div class="row mt-3">
+                        <div class="col-lg-1">
+                            <label>STT</label>
+                        </div>
+                        <div class="col-lg-9">
+                            <label for="cname">Nhan đề</label>
+                        </div>
+                        <div class="col-lg-2">
+                            <label for="cname">Số lượng</label>
+                        </div>
+                    </div>
+
+                    @foreach (var chitiet in Model)
+                    {
+                        <div class="row">
+                            <div class="col-lg-1">
+                                <input class="form-control mt-2 mb-4 ps-3" value="@count" readonly />
+                            </div>
+                            <div class="col-lg-9">
+                                <input class="form-control mt-2 mb-4 ps-3" value="@chitiet?.MacthdNavigation?.MasachNavigation.Nhande" readonly />
+                            </div>
+                            <div class="col-lg-2">
+                                <input class="form-control mt-2 mb-4 ps-3" value="1" readonly />
+                            </div>
+                        </div>
+                        count++;
+                    }
+
+                </div>
+            </div>
+        </form>
+    </div>
+</section>

@@ -1,0 +1,85 @@
+﻿@model IEnumerable<PhieuMuon>
+
+@{
+    ViewData["Title"] = "LichSu";
+    Layout = "~/Views/Shared/_LayoutIndexUsers.cshtml";
+}
+<section class="hero-section position-relative padding-large" style="background-image: url(../layoutUser/images/banner-image-bg-1.jpg); background-size: cover; background-repeat: no-repeat; background-position: center; height: 400px;">
+    <div class="hero-content">
+        <div class="container">
+            <div class="row">
+                <div class="text-center">
+                    <h1>Lịch sử</h1>
+                    <div class="breadcrumbs">
+                        <span class="item">
+                            <a href="index.html">Trang chủ > </a>
+                        </span>
+                        <span class="item text-decoration-underline">Lịch sử</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<style>
+    .custom-table thead th {
+        font-weight: bold;
+    }
+
+    .custom-table {
+        margin-left: 1rem !important; /* Khoảng cách bên trái */
+        margin-right: 3rem !important; /* Khoảng cách bên phải */
+        margin-top: 1rem !important; /* Khoảng cách phía trên */
+        margin-bottom: 1rem !important; /* Khoảng cách phía dưới */
+    }
+</style>
+
+<form class="form-group" asp-controller="PhieuMuon" asp-action="LichSu" method="post">
+    <div class="row d-flex flex-wrap">
+        <div class="col-lg-12">
+            @if (Context.Session.GetString("Manguoidung") != null)
+            {
+                <table class="table table-bordered custom-table">
+                    <thead>
+                        <tr>
+                            <th>Mã phiếu mượn</th>
+                            <th>Ngày mượn</th>
+                            <th>Ngày trả</th>
+                            <th>Trạng thái</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>
+                                    <input class="form-control" value="@item.Maphieumuon" readonly>
+                                </td>
+                                <td>
+                                    <input class="form-control" type="date" name="ngaymuon" value='@(item.Ngaymuon.HasValue ? item.Ngaymuon.Value.ToString("yyyy-MM-dd") : "")' readonly>
+                                </td>
+                                <td>
+                                    <input class="form-control" type="date" name="ngaytra" value='@(item.Ngaytra.HasValue ? item.Ngaytra.Value.ToString("yyyy-MM-dd") : "")' readonly>
+                                </td>
+                                <td>
+                                    <input class="form-control" value="@item.Trangthai" readonly>
+                                </td>
+                                <td>
+                                    <a asp-controller="PhieuMuon" asp-action="ChiTiet" asp-route-id="@item.Maphieumuon"><i class="fa fa-eye" aria-hidden="true"></i></a>
+                                    
+                                </td>
+
+                                
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            }
+        </div>
+    </div>
+</form>
+
+
+

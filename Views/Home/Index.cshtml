@@ -1,0 +1,79 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+    Layout = "~/Views/Shared/_LayoutIndexUsers.cshtml";
+}
+<section id="billboard" class="position-relative d-flex align-items-center py-5 bg-light-gray"
+         style="background-image: url(../layoutUser/images/banner-image-bg.jpg); background-size: cover; background-repeat: no-repeat; background-position: center; height: 800px;">
+    <div class="position-absolute end-0 pe-0 pe-xxl-5 me-0 me-xxl-5 swiper-next main-slider-button-next">
+        <svg class="chevron-forward-circle d-flex justify-content-center align-items-center p-2" width="80" height="80">
+            <use xlink:href="#alt-arrow-right-outline"></use>
+        </svg>
+    </div>
+    <div class="position-absolute start-0 ps-0 ps-xxl-5 ms-0 ms-xxl-5 swiper-prev main-slider-button-prev">
+        <svg class="chevron-back-circle d-flex justify-content-center align-items-center p-2" width="80" height="80">
+            <use xlink:href="#alt-arrow-left-outline"></use>
+        </svg>
+    </div>
+    <div class="swiper main-swiper">
+        <div class="swiper-wrapper d-flex align-items-center">
+            <div class="swiper-slide">
+                <div class="container">
+                    <div class="row d-flex flex-column-reverse flex-md-row align-items-center">
+                        <div class="col-md-5 offset-md-1 mt-5 mt-md-0 text-center text-md-start">
+                            <div class="banner-content">
+                                <h2 id="currentDate">Loading...</h2>
+                                <h2 id="realtimeData">Loading...</h2>
+                                <p id="openStatus">Loading...</p>
+                            </div>
+                            <script type="text/javascript" src="../layoutUser/js/realtime.js"></script>
+                            <script type="text/javascript" src="../layoutUser/js/daytime.js"></script>
+                            <script type="text/javascript" src="../layoutUser/js/openclose.js"></script>
+                        </div>
+
+                        <div class="col-md-6 text-center">
+                            <div class="image-holder">
+                                <img src="../layoutUser/images/bia-4.png" class="img-fluid" alt="banner">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="swiper-slide">
+                <div class="container">
+                    <div class="row d-flex flex-column-reverse flex-md-row align-items-center">
+                        <div class="col-md-5 offset-md-1 mt-5 mt-md-0 text-center text-md-start">
+                            <div class="banner-content">
+                                <h2>Nghiên cứu khoa học</h2>
+                                <p>Giúp cho nhận thức của con người phát triển sâu và rộng hơn về thế giới, mở rộng kho tàng tri thức của nhân loại</p>
+
+                            </div>
+                        </div>
+                        <div class="col-md-6 text-center">
+                            <div class="image-holder">
+                                <img src="../layoutUser/images/bia-6.png" class="img-fluid" alt="banner">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="swiper-slide">
+                <div class="container">
+                    <div class="row d-flex flex-column-reverse flex-md-row align-items-center">
+                        <div class="col-md-5 offset-md-1 mt-5 mt-md-0 text-center text-md-start">
+                            <div class="banner-content">
+                                <h2>Đăng kí tài khoản</h2>
+                                <p>Bạn đọc có thể tham khảo tài liệu số và đặt trước phiếu mượn</p>
+                                <a href="shop.html" class="btn mt-3">Quy trình đăng kí</a>
+                            </div>
+                        </div>
+                        <div class="col-md-6 text-center">
+                            <div class="image-holder">
+                                <img src="../layoutUser/images/bia-8.png" class="img-fluid" alt="banner">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

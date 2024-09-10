@@ -1,0 +1,120 @@
+﻿@model Tuple<List<NguoiDung>, List<NguoiMuon>>
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Views/Shared/LayoutIndexAdmin.cshtml";
+}
+<div class="container-fluid">
+    <!-- DataTales Example -->
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+            <h6 class="m-0 font-weight-bold text-primary">Tạo tài khoản người dùng mới</h6>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <form asp-action="Create" method="post">
+                    <div class="row">
+                        <div class="col-lg-3">
+                            <label for="manguoimuon">Mã sinh viên</label>
+                            <input type="text" id="manguoimuon" name="manguoimuon" class="form-control mt-2 mb-4 ps-3" list="nguoiMuonList" onchange="updateFieldsSinhVien()" />
+                            <datalist id="nguoiMuonList">
+                                @foreach (var item in Model.Item2)
+                                {
+                                    <option value="@item.Manguoimuon"
+                                        data-ten="@item.Ten"
+                                        data-khoa="@item.Khoa"
+                                        data-khoas="@item.Khoas">
+                                    </option>
+                                }
+                            </datalist>
+                        </div>
+                        <div class="col-lg-3">
+                            <label for="hovaten">Họ và tên</label>
+                            <input type="text" id="hovaten" name="Ten"class="form-control mt-2 mb-4 ps-3" readonly>
+                        </div>
+                        <div class="col-lg-3">
+                            <label for="khoa">Khoa</label>
+                            <input type="text" id="khoa" class="form-control mt-2 mb-4 ps-3" readonly>
+                        </div>
+                        <div class="col-lg-3">
+                            <label for="khoas">Khoá</label>
+                            <input type="text" id="khoas" class="form-control mt-2 mb-4 ps-3" readonly>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-3">
+                            <label for="manguoidung">Mã người dùng</label>
+                            <input type="text" id="manguoidung" name="Manguoidung" value="@ViewBag.newND" class="form-control mt-2 mb-4 ps-3" readonly>
+                        </div>
+                        <div class="col-lg-3">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" name="Email" class="form-control mt-2 mb-4 ps-3">
+                        </div>
+                        <div class="col-lg-3">
+                            <label for="matkhau">Mật khẩu</label>
+                            <input type="password" id="matkhau" name="Matkhau" class="form-control mt-2 mb-4 ps-3">
+                        </div>
+                        <div class="col-lg-3">
+                            <label for="gioitinh">Giới tính</label>
+                            <select id="gioitinh" name="Gioitinh" class="form-control mt-2 mb-4 ps-3">
+                                <option value="1">Nam</option>
+                                <option value="0">Nữ</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-3">
+                            <label for="sodienthoai">Số điện thoại</label>
+                            <input type="text" id="sodienthoai" name="Sodienthoai" class="form-control mt-2 mb-4 ps-3">
+                        </div>
+                        <div class="col-lg-3">
+                            <label for="diachi">Địa chỉ</label>
+                            <input type="text" id="diachi" name="Diachi" class="form-control mt-2 mb-4 ps-3">
+                        </div>
+                        <div class="col-lg-3">
+                            <label for="ngaysinh">Ngày sinh</label>
+                            <input type="date" id="ngaysinh" name="Ngaysinh" class="form-control mt-2 mb-4 ps-3">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-3">
+                            <button type="submit" class="btn btn-primary mt-4">Lưu</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    function updateFieldsSinhVien() {
+        var selectedOption = document.getElementById("manguoimuon").value;
+        var dataList = document.getElementById("nguoiMuonList").getElementsByTagName("option");
+
+        for (var i = 0; i < dataList.length; i++) {
+            if (dataList[i].value === selectedOption) {
+                var ten = dataList[i].getAttribute("data-ten");
+                var khoa = dataList[i].getAttribute("data-khoa");
+                var khoas = dataList[i].getAttribute("data-khoas");
+
+                document.getElementById("hovaten").value = ten;
+                document.getElementById("khoa").value = khoa;
+                document.getElementById("khoas").value = khoas;
+
+                // Tự động tạo mã người dùng
+                //var lastUserId = parseInt(dataList[i].value.substring(2)); // Giả sử Mã người mượn có dạng "NM001"
+                //document.getElementById("manguoidung").value = "ND" + (lastUserId + 1);
+
+                // Mặc định giá trị cho Email và Mật khẩu
+                document.getElementById("email").value = selectedOption + "@@gmail.com";
+                document.getElementById("matkhau").value = "123456";
+
+                // Chuyển đổi giới tính
+                var gioitinh = document.getElementById("gioitinh");
+                gioitinh.value = "1"; // Nam mặc định
+
+                break;
+            }
+        }
+    }
+</script>

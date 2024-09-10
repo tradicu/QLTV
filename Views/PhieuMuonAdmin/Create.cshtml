@@ -1,0 +1,189 @@
+﻿@model Tuple<List<NguoiDung>, List<NguoiMuon>, List<Chitietphieumuon>, List<dynamic>, List<Sach>>
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Views/Shared/LayoutIndexAdmin.cshtml";
+}
+
+
+<div class="container-fluid">
+    <!-- DataTales Example -->
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+            <h6 class="m-0 font-weight-bold text-primary">Phiếu mượn online</h6>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                @if (Context.Session.GetString("Manguoidung") != null)
+                {
+                    <form asp-controller="PhieuMuonAdmin" asp-action="Create" method="post">
+                        <div class="row" roller="PhieuMuonAdmin">
+                            <div class="col-lg-6">
+                                <label for="manguoidung">Mã người lập phiếu</label>
+                                <input type="text" id="manguoidung" name="manguoidung" class="form-control mt-2 mb-4 ps-3" value="@Context.Session.GetString("Manguoidung")" readonly />
+                            </div>
+                            <div class="col-lg-6">
+                                <label for="tennguoidung">Tên người lập phiếu</label>
+                                <input type="text" id="tennguoidung" name="tennguoidung" class="form-control mt-2 mb-4 ps-3" value="@Context.Session.GetString("Ten")" readonly />
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-lg-3">
+                                <label for="manguoimuon">Mã sinh viên</label>
+                                <input type="text" id="manguoimuon" name="manguoimuon" class="form-control mt-2 mb-4 ps-3" list="nguoiMuonList" onchange="updateFieldsSinhVien()" />
+                                <datalist id="nguoiMuonList">
+                                    @foreach (var item in Model.Item2)
+                                    {
+                                        <option value="@item.Manguoimuon"
+                                        data-ten="@item.Ten"
+                                        data-khoa="@item.Khoa"
+                                        data-khoas="@item.Khoas">
+                                        </option>
+                                    }
+                                </datalist>
+                            </div>
+                            <div class="col-lg-3">
+                                <label for="hovaten">Họ và tên</label>
+                                <input type="text" id="hovaten" class="form-control mt-2 mb-4 ps-3" readonly />
+                            </div>
+                            <div class="col-lg-3">
+                                <label for="khoa">Khoa</label>
+                                <input type="text" id="khoa" class="form-control mt-2 mb-4 ps-3" readonly />
+                            </div>
+                            <div class="col-lg-3">
+                                <label for="khoas">Khoá</label>
+                                <input type="text" id="khoas" class="form-control mt-2 mb-4 ps-3" readonly />
+                            </div>
+                        </div>
+
+                        <div>
+                            <label>Sách mượn</label>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-lg-2">
+                                <label for="machitietsach">Mã chi tiết sách</label>
+                            </div>
+                            <div class="col-lg-9">
+                                <label for="tensach">Tên sách</label>
+                            </div>
+                        </div>
+
+                        <div id="bookRowsContainer">
+                            <div class="row book-row">
+                                <div class="col-lg-2">
+                                    <input type="text" id="machitietsach" name="machitietsach" class="form-control mt-2 mb-4 ps-3" list="chiTietSachList" onchange="updateFieldsSach(this)" />
+                                    <datalist id="chiTietSachList">
+                                        @foreach (var item in Model.Item4)
+                                        {
+                                            <option value="@item.Macthd" data-tensach="@item.Nhande"></option>
+                                        }
+                                    </datalist>
+                                </div>
+                                <div class="col-lg-9">
+                                    <input type="text" id="tensach" class="form-control mt-2 mb-4 ps-3" readonly />
+                                </div>
+                                <div class="col-lg-1">
+                                    <a onclick="addNewRow()">
+                                        <i class="fas fa-plus"></i>
+                                    </a>
+                                    <a onclick="removeRow(this)">
+                                        <i class="fas fa-minus"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-lg-4">
+                                <label for="NgayMuon">Ngày mượn</label>
+                                <input id="NgayMuon" name="ngaymuon" type="date" class="form-control" />
+                            </div>
+                            <div class="col-lg-4">
+                                <label for="NgayTra">Ngày trả</label>
+                                <input id="NgayTra" name="ngaytra" type="date" class="form-control" />
+                            </div>
+                            <div class="col-lg-4">
+                                <label for="TrangThai">Trạng thái</label>
+                                <input id="TrangThai" name="trangthai" type="text" class="form-control" value="PHIEUMUON" readonly />
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-lg-3"></div>
+                            <div class="col-lg-3"></div>
+                            <div class="col-lg-3"></div>
+                            <div class="col-lg-3">
+                                <button type="submit" name="submit" value="Create" class="btn btn-primary">Tạo phiếu mượn</button>
+                            </div>
+                        </div>
+                        @section Scripts {
+                        <script>
+                            function updateFieldsSinhVien() {
+                                var input = document.getElementById('manguoimuon');
+                                var options = document.getElementById('nguoiMuonList').options;
+                                var selectedValue = input.value;
+
+                                for (var i = 0; i < options.length; i++) {
+                                    if (options[i].value === selectedValue) {
+                                        document.getElementById('hovaten').value = options[i].getAttribute('data-ten');
+                                        document.getElementById('khoa').value = options[i].getAttribute('data-khoa');
+                                        document.getElementById('khoas').value = options[i].getAttribute('data-khoas');
+                                        break;
+                                    }
+                                }
+                            }
+
+                            function updateFieldsSach(inputElement) {
+                                var options = document.getElementById('chiTietSachList').options;
+                                var selectedValue = inputElement.value;
+
+                                for (var i = 0; i < options.length; i++) {
+                                    if (options[i].value === selectedValue) {
+                                        inputElement.closest('.book-row').querySelector('input[id="tensach"]').value = options[i].getAttribute('data-tensach');
+                                        break;
+                                    }
+                                }
+                            }
+
+                            function addNewRow() {
+                                var newRowHtml = `
+                                                                    <div class="row book-row">
+                                                                        <div class="col-lg-2">
+                                                                            <input type="text" id="machitietsach" name="machitietsach" class="form-control mt-2 mb-4 ps-3" list="chiTietSachList" onchange="updateFieldsSach(this)" />
+                                                                            <datalist id="chiTietSachList">
+                            @foreach (var item in Model.Item4)
+                                {
+                                                                                            <option value="@item.Macthd" data-tensach="@item.Nhande"></option>
+                                }
+                                                                                </datalist>
+                                                                            </div>
+                                                                            <div class="col-lg-9">
+                                                                                <input type="text" id="tensach" class="form-control mt-2 mb-4 ps-3" readonly />
+                                                                            </div>
+                                                                            <div class="col-lg-1">
+                                                                                <a onclick="addNewRow()">
+                                                                                    <i class="fas fa-plus"></i>
+                                                                                </a>
+                                                                                <a onclick="removeRow(this)">
+                                                                                    <i class="fas fa-minus"></i>
+                                                                                </a>
+                                                                            </div>
+                                                                        </div>
+                                                                    `;
+
+                                    document.getElementById('bookRowsContainer').insertAdjacentHTML('beforeend', newRowHtml);
+                                }
+
+                                function removeRow(element) {
+                                    var row = element.closest('.row');
+                                    row.parentNode.removeChild(row);
+                                }
+                            </script>
+                    }
+                    </form>
+                }
+            </div>
+        </div>
+    </div>
+</div>

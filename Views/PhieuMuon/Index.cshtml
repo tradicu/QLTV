@@ -1,0 +1,152 @@
+﻿@using Microsoft.AspNetCore.Http;
+@using DATN_Library.Extension;
+@using DATN_LiBrary.Models;
+@using DATN_LiBrary.ModelViews;
+@model NguoiMuon
+@{
+    ViewData["Title"] = "PhieuMuon";
+    Layout = "~/Views/Shared/_LayoutIndexUsers.cshtml";
+
+    var datdon = Context.Session.Get<List<CartItem>>("GioHang");
+    var count = 1;
+
+}
+<section class="hero-section position-relative padding-large"
+         style="background-image: url(../layoutUser/images/banner-image-bg-1.jpg); background-size: cover; background-repeat: no-repeat; background-position: center; height: 400px;">
+    <div class="hero-content">
+        <div class="container">
+            <div class="row">
+                <div class="text-center">
+                    <h1>Phiếu đặt</h1>
+                    <div class="breadcrumbs">
+                        <span class="item">
+                            <a href="index.html">Trang chủ > </a>
+                        </span>
+                        <span class="item text-decoration-underline">Giỏ hàng ></span>
+                        <span class="item text-decoration-underline">Phiếu đặt</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="checkout-wrap padding-large">
+    <div class="container">
+        <form class="form-group" asp-controller="PhieuMuon" asp-action="Index" method="post">
+            <div class="row d-flex flex-wrap">
+                <div class="col-lg-12">
+                    <h3 class="mb-3 text-center">Chi tiết phiếu đặt</h3>
+                    @if (Context.Session.GetString("Manguoidung") != null)
+                    {
+                        <div class="row">
+                            <div class="col-lg-3">
+                                <label>Họ và tên</label>
+                                <input asp-for="Ten"  id="fname" class="form-control mt-2 mb-4 ps-3 " value="@Context.Session.GetString("Ten")" readonly>
+                            </div>
+                            <div class="col-lg-3">
+                                <label for="cname">Mã sinh viên</label>
+                                <input asp-for="Manguoimuon" type="text" id="lname" class="form-control mt-2 mb-4 ps-3 " value="@Context.Session.GetString("Manguoimuon")" readonly>
+                            </div>
+                            <div class="col-lg-3">
+                                <label for="cname">Khoa</label>
+                                <input asp-for="Khoa" type="text" id="cname" class="form-control mt-2 mb-4 ps-3 " value="@Context.Session.GetString("Khoa")" readonly>
+                            </div>
+                            <div class="col-lg-3">
+                                <label for="cname">Khoá</label>
+                                <input asp-for="Khoas" type="text" id="cname"  class="form-control mt-2 mb-4 ps-3 " value="@Context.Session.GetString("Khoas")" readonly>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-4">
+                                <label for="currentDateDate">Ngày gửi</label>
+                                <input  type="Date" id="currentDateDate" >
+                            </div>
+                            <div class="col-lg-4">
+                                <label for="datepickerBorrow">Ngày mượn</label>
+                                <input type="Date" id="datepickerBorrow" name="ngaymuon">
+                            </div>
+                            <div class="col-lg-4">
+                                <label for="datepickerReturn">Ngày trả</label>
+                                <input type="Date" id="datepickerReturn" name="ngaytra">
+                            </div>
+                        </div>
+                           @* <h4>Danh sách sách đặt</h4>*@
+                            <div class="row">
+                                <div class="col-lg-1">
+                                    <label>STT</label>
+                                </div>                         
+                                <div class="col-lg-9">
+                                    <label for="cname">Nhan đề</label>  
+                                </div>
+                                <div class="col-lg-2">
+                                    <label for="cname">Số lượng</label>     
+                                </div>                             
+                            </div>
+                        @foreach (var item in datdon)
+                        {
+                            <div class="row">
+                                <div class="col-lg-1">
+                                    <input id="fname" name="firstname" class="form-control mt-2 mb-4 ps-3 " value="@count" readonly>
+                                </div>
+                                <div class="col-lg-9">
+                                    <input id="fname" name="firstname" class="form-control mt-2 mb-4 ps-3 " value="@item.masach.Nhande" readonly>
+                                </div>
+                                <div class="col-lg-2">
+                                    <input id="fname" name="firstname" class="form-control mt-2 mb-4 ps-3 " value="@item.soLuong" readonly>
+                                </div>
+                            </div>
+                            count++;
+                        }
+                      
+                        
+                    }    
+                   
+                    
+                </div>
+               
+
+                    <div class="cart-totals padding-medium pb-0">
+                     
+               
+                        <div class="button-wrap mt-3">
+                        <button type="submit" name="submit" value="Create" class="btn">Gửi yêu cầu</button>
+                        </div>
+                    </div>
+
+
+            </div>
+        </form>
+    </div>
+</section>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+<script>
+    // Hàm để lấy ngày hiện tại và định dạng theo ý muốn (dd/mm/yyyy)
+    function getCurrentDate() {
+        var today = new Date();
+        var day = String(today.getDate()).padStart(2, '0');
+        var month = String(today.getMonth() + 1).padStart(2, '0'); // Tháng bắt đầu từ 0 nên cần cộng thêm 1
+        var year = today.getFullYear();
+        return year + '-' + month + '-' + day;
+    }
+
+    document.addEventListener('DOMContentLoaded', function () {
+        // Khởi tạo Flatpickr cho các trường ngày mượn và ngày trả
+        flatpickr("#datepickerBorrow", {
+            dateFormat: "Y-m-d",
+        });
+        flatpickr("#datepickerReturn", {
+            dateFormat: "Y-m-d",
+        });
+
+        // Gán giá trị ngày hiện tại cho trường "currentDateDate"
+        var dateInput = document.getElementById('currentDateDate');
+        if (dateInput) {
+            dateInput.value = getCurrentDate();
+        } else {
+            console.error('Element with id "currentDateDate" not found.');
+        }
+    });
+</script>
+

@@ -1,0 +1,69 @@
+﻿
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Views/Shared/LayoutAdmin.cshtml";
+}
+<div class="container-fluid">
+    <!-- Thêm mới sách -->
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+            <h6 class="m-0 font-weight-bold text-primary">Thêm mới sách</h6>
+        </div>
+        <div class="card-body">
+            <form asp-action="Create" method="post" enctype="multipart/form-data">
+                <div class="row">
+                    <div class="col-lg-2">
+                        <!-- Ảnh -->
+                        <label for="hinhanhFile">Hình ảnh:</label>
+                        <input type="file" class="form-control-file" id="hinhanhFile" name="hinhanhFile">
+                    </div>
+                    <div class="col-lg-10">
+                        <div class="form-group">
+                            <label for="Masach">Mã sách:</label>
+                            <input type="text" class="form-control" id="Masach" name="Masach" value="@ViewBag.NewMasach" readonly>
+                        </div>
+                        <div class="form-group">
+                            <label for="Nhande">Tên sách:</label>
+                            <input type="text" class="form-control" id="Nhande" name="Nhande" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="Tacgia">Tác giả:</label>
+                            <input type="text" class="form-control" id="Tacgia" name="Tacgia" placeholder="Nhập tác giả, phân cách bằng dấu phẩy" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="Theloai">Thể loại:</label>
+                            <input type="text" class="form-control" id="Theloai" name="Theloai" placeholder="Nhập thể loại, phân cách bằng dấu phẩy" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="Namxuatban">Năm xuất bản:</label>
+                            <input type="text" class="form-control" id="Namxuatban" name="Namxuatban" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="Sotrang">Số trang:</label>
+                            <input type="text" class="form-control" id="Sotrang" name="Sotrang" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="Soluong">Số lượng:</label>
+                            <input type="text" class="form-control" id="Soluong" name="Soluong" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="Nhaxuatban">Nhà xuất bản:</label>
+                            <input type="text" class="form-control" id="Nhaxuatban" name="Nhaxuatban" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="MoTa">Mô tả sách:</label>
+                            <textarea class="form-control" id="MoTa" name="MoTa" rows="4"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="pdfFile" class="control-label">PDF File</label>
+                            <input type="file" name="pdfFile" class="form-control-file" />
+                        </div>
+                        <button type="submit" class="btn btn-primary">Thêm mới</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<script src="~/admin/js/noidungsach.js"></script>
+
